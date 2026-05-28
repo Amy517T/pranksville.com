@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
-import type { GameState, GamePhase, Room } from './types';
+import type { GameState, GamePhase, Room, JournalEntry } from './types';
 import { levels } from './levels';
 
 const initialState: GameState = {
@@ -13,6 +13,7 @@ const initialState: GameState = {
   playerName: '',
   startTime: Date.now(),
   inventory: [],
+  journalsFound: [],
 };
 
 interface PursuitState {
@@ -27,7 +28,6 @@ export function useGameState() {
   const [phase, setPhase] = useState<GamePhase>('title');
   const [scareMessage, setScareMessage] = useState('');
   const [scareType, setScareType] = useState<string>('jumpscare');
-  const [sessionId, setSessionId] = useState<string | null>(null);
   const [pursuit, setPursuit] = useState<PursuitState>({ active: false, roomId: null, roomsBehind: 3, message: '' });
   const [pursuitWarning, setPursuitWarning] = useState('');
   const [ambushMessage, setAmbushMessage] = useState('');
@@ -42,7 +42,6 @@ export function useGameState() {
   const currentLevel = levels[gameState.currentLevel - 1];
   const currentRoom: Room | undefined = currentLevel?.rooms[gameState.currentRoom];
 
-  // Passive sanity drain — the mansion consumes your mind just by being here
   useEffect(() => {
     if (phase !== 'playing') {
       if (passiveDrainRef.current) clearInterval(passiveDrainRef.current);
@@ -51,7 +50,6 @@ export function useGameState() {
     passiveDrainRef.current = setInterval(() => {
       setGameState(prev => {
         if (prev.sanity <= 0) return prev;
-        // Drain increases with level and decreases with remaining sanity
         const baseDrain = 0.3 + (prev.currentLevel * 0.15);
         const sanityFactor = Math.max(0.5, prev.sanity / 100);
         const drain = baseDrain * sanityFactor;
@@ -62,14 +60,12 @@ export function useGameState() {
     return () => { if (passiveDrainRef.current) clearInterval(passiveDrainRef.current); };
   }, [phase]);
 
-  // Check for sanity death
   useEffect(() => {
     if (gameState.sanity <= 0 && phase === 'playing') {
       setPhase('gameOver');
     }
   }, [gameState.sanity, phase]);
 
-  // Pursuit entity — starts stalking you after 3 rooms visited in a level
   useEffect(() => {
     if (phase !== 'playing') {
       if (pursuitTickRef.current) clearInterval(pursuitTickRef.current);
@@ -85,7 +81,6 @@ export function useGameState() {
         setPursuit(prev => {
           const newBehind = prev.roomsBehind - 1;
           if (newBehind <= 0) {
-            // It caught you
             setGameState(gs => ({
               ...gs,
               sanity: Math.max(0, gs.sanity - 25),
@@ -110,8 +105,12 @@ export function useGameState() {
 
   const startGame = useCallback((playerName: string) => {
     setGameState({ ...initialState, playerName, startTime: Date.now() });
-    setPhase('playing');
+    setPhase('intro');
     setPursuit({ active: false, roomId: null, roomsBehind: 3, message: '' });
+  }, []);
+
+  const finishIntro = useCallback(() => {
+    setPhase('playing');
   }, []);
 
   const moveToRoom = useCallback((roomId: string) => {
@@ -123,12 +122,10 @@ export function useGameState() {
         ...prev,
         currentRoom: roomId,
         roomsVisited: newVisited,
-        // Moving costs sanity — the mansion resists your exploration
         sanity: Math.max(0, Math.round((prev.sanity - (1 + prev.currentLevel * 0.5)) * 10) / 10),
       };
     });
 
-    // Random chance of entry scare on room change
     if (Math.random() < 0.3) {
       const entryScareMessages = [
         'Something moved in the corner of your eye.',
@@ -146,7 +143,6 @@ export function useGameState() {
       setTimeout(() => setRoomEntryMessage(''), 3000);
     }
 
-    // Moving resets pursuit distance slightly
     setPursuit(prev => {
       if (prev.active) {
         return { ...prev, roomsBehind: Math.min(prev.roomsBehind + 1, 4) };
@@ -155,7 +151,6 @@ export function useGameState() {
     });
   }, []);
 
-  // Random ambush pranks — can happen at any time while playing
   useEffect(() => {
     if (phase !== 'playing') {
       if (ambushTimeoutRef.current) clearTimeout(ambushTimeoutRef.current);
@@ -225,7 +220,6 @@ export function useGameState() {
     setGameState(prev => ({
       ...prev,
       keysFound: prev.keysFound + 1,
-      // Keys cost sanity — they don't want to be found
       sanity: Math.max(0, Math.round((prev.sanity - 3) * 10) / 10),
     }));
   }, []);
@@ -237,6 +231,16 @@ export function useGameState() {
         ...prev,
         inventory: [...prev.inventory, item],
         sanity: Math.max(0, Math.round((prev.sanity - 1) * 10) / 10),
+      };
+    });
+  }, []);
+
+  const collectJournal = useCallback((journal: JournalEntry) => {
+    setGameState(prev => {
+      if (prev.journalsFound.find(j => j.id === journal.id)) return prev;
+      return {
+        ...prev,
+        journalsFound: [...prev.journalsFound, journal],
       };
     });
   }, []);
@@ -254,7 +258,6 @@ export function useGameState() {
         currentRoom: nextLevelData.startRoom,
         keysFound: 0,
         roomsVisited: [nextLevelData.startRoom],
-        // Advancing costs 5 sanity — the mansion fights your escape
         sanity: Math.max(0, Math.round((prev.sanity - 5) * 10) / 10),
       }));
       setPursuit({ active: false, roomId: null, roomsBehind: 3, message: '' });
@@ -290,15 +293,15 @@ export function useGameState() {
     currentLevel,
     currentRoom,
     startGame,
+    finishIntro,
     moveToRoom,
     triggerPrank,
     collectKey,
     collectItem,
+    collectJournal,
     advanceLevel,
     canAdvanceLevel,
     resetGame,
-    sessionId,
-    setSessionId,
     pursuit,
     pursuitWarning,
     ambushMessage,

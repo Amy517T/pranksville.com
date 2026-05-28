@@ -8,6 +8,7 @@ export interface Room {
   prank: Prank | null;
   items: string[];
   ambientDescription: string;
+  journalEntry?: JournalEntry;
 }
 
 export interface Prank {
@@ -19,10 +20,19 @@ export interface Prank {
   duration: number;
 }
 
+export interface JournalEntry {
+  id: string;
+  title: string;
+  text: string;
+  chapter: number;
+}
+
 export interface Level {
   id: number;
   name: string;
   subtitle: string;
+  introNarrative: string[];
+  exitNarrative: string[];
   rooms: Record<string, Room>;
   startRoom: string;
   requiredKeys: number;
@@ -45,6 +55,7 @@ export interface GameState {
   playerName: string;
   startTime: number;
   inventory: string[];
+  journalsFound: JournalEntry[];
 }
 
-export type GamePhase = 'title' | 'playing' | 'scare' | 'levelComplete' | 'gameOver' | 'victory';
+export type GamePhase = 'title' | 'intro' | 'playing' | 'scare' | 'levelComplete' | 'gameOver' | 'victory';

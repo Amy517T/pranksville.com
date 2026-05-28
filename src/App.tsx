@@ -3,6 +3,7 @@ import { useGameState } from './game/useGameState';
 import { levels } from './game/levels';
 import { playAmbientDrone, playHeartbeat } from './lib/sounds';
 import { TitleScreen } from './components/TitleScreen';
+import { IntroSequence } from './components/IntroSequence';
 import { RoomView } from './components/RoomView';
 import { ScareOverlay } from './components/ScareOverlay';
 import { HUD } from './components/HUD';
@@ -24,10 +25,12 @@ function App() {
     currentLevel,
     currentRoom,
     startGame,
+    finishIntro,
     moveToRoom,
     triggerPrank,
     collectKey,
     collectItem,
+    collectJournal,
     advanceLevel,
     canAdvanceLevel,
     resetGame,
@@ -120,6 +123,13 @@ function App() {
         />
       )}
 
+      {phase === 'intro' && (
+        <IntroSequence
+          playerName={gameState.playerName}
+          onComplete={finishIntro}
+        />
+      )}
+
       {phase === 'playing' && currentRoom && (
         <>
           <HUD
@@ -136,6 +146,7 @@ function App() {
             onTriggerPrank={triggerPrank}
             onCollectKey={collectKey}
             onCollectItem={collectItem}
+            onCollectJournal={collectJournal}
             onAdvanceLevel={handleAdvanceLevel}
             canAdvanceLevel={canAdvanceLevel()}
             pursuitWarning={pursuitWarning}
@@ -167,6 +178,7 @@ function App() {
         <GameOver
           levelName={currentLevel.name}
           pranksTriggered={gameState.pranksTriggered.length}
+          gameState={gameState}
           onRestart={resetGame}
         />
       )}

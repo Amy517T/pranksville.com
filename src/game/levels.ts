@@ -14,6 +14,16 @@ export const levels: Level[] = [
     id: 1,
     name: 'The Abandoned Wing',
     subtitle: 'Where shadows learn to walk',
+    introNarrative: [
+      'The air inside is thick — not with dust, but with memory.',
+      'Eleanor Voss walked these halls three weeks ago. Her footsteps are still echoing.',
+      'Find the keys. Unlock the deeper rooms. She left breadcrumbs — if you can find them before the house finds you.',
+    ],
+    exitNarrative: [
+      'A passage opens beneath the bookshelf — stone stairs descending into darkness.',
+      'Eleanor\'s handwriting is carved into the wall: "THE HOUSE IS ALIVE. IT EATS MEMORIES."',
+      'You are not escaping. You are going deeper. And it wants you to.',
+    ],
     startRoom: 'foyer',
     requiredKeys: 5,
     colorScheme: {
@@ -87,6 +97,7 @@ export const levels: Level[] = [
         },
         items: ['tome of rituals'],
         ambientDescription: 'Pages turn by themselves in the corner.',
+        journalEntry: { id: 'journal_eleanor_1', title: "Eleanor's Notebook — Entry 1", text: "Day 3. The library books rewrite themselves when I'm not looking. I found one that describes ME — my childhood, my degrees, my fears. It knows more about me than I do. It's reading me like a book. I am the book.", chapter: 1 },
       },
       kitchen: {
         id: 'kitchen',
@@ -170,6 +181,7 @@ export const levels: Level[] = [
         },
         items: ['ancient key'],
         ambientDescription: 'Something is breathing in the dark below. It knows you\'re here.',
+        journalEntry: { id: 'journal_eleanor_3', title: "Eleanor's Notebook — Entry 3", text: "Day 9. The passage behind the bookshelf goes deeper than the cellar. The walls have scratches — fingernail marks. Some are old. Some aren't. One set matches my handwriting: I carved my own name into the stone without remembering it.", chapter: 1 },
       },
       smoking_lounge: {
         id: 'smoking_lounge',
@@ -311,6 +323,7 @@ export const levels: Level[] = [
         },
         items: ['music box cylinder'],
         ambientDescription: 'The mobile turns without wind. The toys are closer than before.',
+        journalEntry: { id: 'journal_eleanor_2', title: "Eleanor's Notebook — Entry 2", text: "Day 6. I found the nursery. The lullaby is real — it plays from nowhere. But the lyrics are wrong. They keep changing to reference my mother. My mother who died when I was seven. The house shouldn't know that. Nothing should know that.", chapter: 1 },
       },
       master_bedroom: {
         id: 'master_bedroom',
@@ -419,6 +432,16 @@ export const levels: Level[] = [
     id: 2,
     name: 'The Cursed Cellar',
     subtitle: 'Where the foundation breathes',
+    introNarrative: [
+      'The cellar stairs descend into suffocating cold.',
+      'This is where they found the first officer — sitting in the corner, catatonic, repeating one word: "Hungry."',
+      'Eleanor\'s second note is pinned to the wall with a rusted nail: "IT BUILDS ITSELF FROM WHO ENTERS. WE ARE THE BRICKS."',
+    ],
+    exitNarrative: [
+      'The well at the bottom reflects a ceiling that isn\'t there — it shows the attic above.',
+      'The mansion is folded in on itself. The way down is the way up. The way out is the way in.',
+      'Eleanor\'s third note floats in the well water: "I AM THE WALLS NOW. PLEASE DON\'T FOLLOW ME."',
+    ],
     startRoom: 'cellar_stairs',
     requiredKeys: 5,
     colorScheme: {
@@ -510,6 +533,7 @@ export const levels: Level[] = [
         },
         items: ['ritual dagger'],
         ambientDescription: 'The black flames cast no light but burn your eyes. The book turns pages faster.',
+        journalEntry: { id: 'journal_eleanor_4', title: "Eleanor's Notebook — Entry 4", text: "Day 11. Found the altar. The black flames cast shadows that move independently. I read from the book — I couldn't stop myself. My voice said things my mind didn't think. The house speaks through you if you let it. Maybe even if you don't.", chapter: 2 },
       },
       maintenance_tunnel: {
         id: 'maintenance_tunnel',
@@ -694,6 +718,7 @@ export const levels: Level[] = [
         },
         items: ['carved bone eye'],
         ambientDescription: 'The bone walls are warm, like living tissue. They pulse.',
+        journalEntry: { id: 'journal_eleanor_5', title: "Eleanor's Notebook — Entry 5", text: "Day 14. The bone walls are warm. They pulse. I pressed my ear against them and heard breathing — then a voice: 'Welcome home.' I think the bones are previous visitors. I think I'm becoming the walls. I think that's the point.", chapter: 2 },
       },
       deep_well: {
         id: 'deep_well',
@@ -741,6 +766,16 @@ export const levels: Level[] = [
     id: 3,
     name: 'The Attic of Whispers',
     subtitle: 'Where thoughts become voices',
+    introNarrative: [
+      'The music box plays a lullaby you almost recognize — from a dream you never had.',
+      'Eleanor spent her last coherent hours up here, filling notebooks with the same sentence on every page: "IT LEARNS BY LISTENING."',
+      'Every thought you have is overheard. Every fear you feel is catalogued. The attic is the mansion\'s ear.',
+    ],
+    exitNarrative: [
+      'The impossible staircase folds reality into itself. You see the mirror dimension beyond.',
+      'Eleanor\'s final notebook lies open on the stairs. One page remains: "I can see myself from every angle at once. I am beautiful. I am infinite. I am —"',
+      'The sentence is incomplete. The pen is still in her hand. But she is not here.',
+    ],
     startRoom: 'attic_landing',
     requiredKeys: 5,
     colorScheme: {
@@ -814,6 +849,7 @@ export const levels: Level[] = [
         },
         items: ['sheet music'],
         ambientDescription: 'A music box plays from somewhere close. It just changed to YOUR song.',
+        journalEntry: { id: 'journal_eleanor_6', title: "Eleanor's Notebook — Entry 6", text: "Day 16. The piano plays my thoughts. Not metaphorically — it converts my inner monologue into melody. When I'm afraid, the music is discordant. When I try to lie, it plays wrong notes. The attic is the house's ear, and it has perfect pitch.", chapter: 3 },
       },
       narrow_corridor: {
         id: 'narrow_corridor',
@@ -850,6 +886,7 @@ export const levels: Level[] = [
         },
         items: ['impossible photograph'],
         ambientDescription: 'The angles of the room make you feel watched from every direction. New photos keep appearing.',
+        journalEntry: { id: 'journal_eleanor_7', title: "Eleanor's Notebook — Entry 7", text: "Day 17. The impossible room. The angles don't add up. I've been here for what feels like hours, but the clock says it's been three days. The photographs on the wall multiply — they show me aging. I look older. Am I older? Is the house consuming my time?", chapter: 3 },
       },
       trunk_room: {
         id: 'trunk_room',
@@ -976,6 +1013,16 @@ export const levels: Level[] = [
     id: 4,
     name: 'The Mirror Dimension',
     subtitle: 'Where reflections have their own intentions',
+    introNarrative: [
+      'You step through the glass and the world inverts. You are the reflection now.',
+      'Eleanor is here — or what remains of her. Her face appears in every surface, mouthing words you cannot hear.',
+      'She is trying to warn you. Or she is trying to lure you. In the mirror world, the two are the same.',
+    ],
+    exitNarrative: [
+      'The void threshold opens — a wound in reality where the mansion\'s heart beats.',
+      'Eleanor\'s voice, clear for the first time, echoes from the other side: "I tried to burn it down. I poured gasoline on the walls. The walls drank it. They liked it."',
+      '"The heart is at the center. Destroy it, and the house dies. But the house already knows you\'re coming. It has always known."',
+    ],
     startRoom: 'mirror_hall',
     requiredKeys: 5,
     colorScheme: {
@@ -1031,6 +1078,7 @@ export const levels: Level[] = [
         },
         items: [],
         ambientDescription: 'The fragments show scenes that change when you blink. One shows your funeral.',
+        journalEntry: { id: 'journal_eleanor_8', title: "Eleanor's Notebook — Entry 8", text: "Day 18. I looked into a shard showing my bedroom at home. Someone is living my life. They wear my face. My family can't tell the difference. I don't think there IS a difference anymore. The reflection replaced me. Or I replaced it. I can't remember which side I'm on.", chapter: 4 },
       },
       infinity_room: {
         id: 'infinity_room',
@@ -1229,6 +1277,7 @@ export const levels: Level[] = [
         },
         items: ['pool water'],
         ambientDescription: 'Your reflection shows something that doesn\'t look like you. It looks like home.',
+        journalEntry: { id: 'journal_eleanor_9', title: "Eleanor's Notebook — Entry 9", text: "Day 19. The pool showed me what I really am: architecture. Walls and doors and rooms. I AM the house. I have always been the house. The person named Eleanor Voss was just a room the house built to hold a consciousness. I am not trapped in here. I AM here.", chapter: 4 },
       },
       between_worlds: {
         id: 'between_worlds',
@@ -1258,6 +1307,16 @@ export const levels: Level[] = [
     id: 5,
     name: 'The Heart of the Mansion',
     subtitle: 'Where it has always been waiting',
+    introNarrative: [
+      'This is the place the mansion has been building toward since before you were born.',
+      'Eleanor is not here. She IS here — she is the walls, the floor, the heartbeat. She was absorbed 17 days ago.',
+      'The heart is the core. The source. The original crime. Destroy it, and every soul trapped in these walls goes free — including yours.',
+    ],
+    exitNarrative: [
+      'The heart shatters. The mansion screams — not in pain, but in recognition.',
+      'It finally understands what it always was: not a house, but a hunger that learned to build walls.',
+      'As the walls dissolve, you see them — Eleanor, the officer, the three who vanished — standing in the light. Free. They do not look at you. They are already gone.',
+    ],
     startRoom: 'void_entrance',
     requiredKeys: 5,
     colorScheme: {
@@ -1468,6 +1527,7 @@ export const levels: Level[] = [
         prank: entryScare('heart_beat', 'The heart BEATS and your chest echoes it. Your ribs align with its cage. Your blood pulses in sync. You are not visiting the heart — you are REUNITING with it. The separation was the illusion. The heart beats. You beat. The mansion beats. One pulse. One body. Yours.', 45),
         items: ['heart of the mansion'],
         ambientDescription: 'It beats. It waits. It knows. You are it.',
+        journalEntry: { id: 'journal_eleanor_10', title: "Eleanor's Notebook — Final Entry", text: "Day 20. The heart beats. My chest echoes it. We are synchronized now. If you're reading this, you've come far enough to understand: the mansion doesn't trap people. It RECRUITS them. Every room is a conversion. Every scare is a test. You're not escaping — you're being prepared. But there's still time. The heart can be destroyed. I couldn't do it. I was already part of the walls by the time I understood. You still have your own skin. Use it. Burn it down.", chapter: 5 },
       },
     },
   },

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { DoorOpen, Key, Package, Eye, ArrowRight } from 'lucide-react';
-import type { Room, Level, GameState } from '../game/types';
+import { DoorOpen, Key, Package, Eye, ArrowRight, BookOpen } from 'lucide-react';
+import type { Room, Level, GameState, JournalEntry } from '../game/types';
 
 interface RoomViewProps {
   room: Room;
@@ -10,6 +10,7 @@ interface RoomViewProps {
   onTriggerPrank: (prank: Room['prank']) => void;
   onCollectKey: () => void;
   onCollectItem: (item: string) => void;
+  onCollectJournal: (journal: JournalEntry) => void;
   onAdvanceLevel: () => void;
   canAdvanceLevel: boolean;
   pursuitWarning: string;
@@ -26,6 +27,7 @@ export function RoomView({
   onTriggerPrank,
   onCollectKey,
   onCollectItem,
+  onCollectJournal,
   onAdvanceLevel,
   canAdvanceLevel,
   pursuitWarning,
@@ -39,12 +41,16 @@ export function RoomView({
   const [itemsCollected, setItemsCollected] = useState<string[]>([]);
   const [ambientFlicker, setAmbientFlicker] = useState(false);
   const [hoveredExit, setHoveredExit] = useState<string | null>(null);
+  const [journalFound, setJournalFound] = useState(false);
+  const [showJournal, setShowJournal] = useState(false);
 
   useEffect(() => {
     setRevealed(false);
     setExaminedPrank(false);
     setKeyCollected(false);
     setItemsCollected([]);
+    setJournalFound(false);
+    setShowJournal(false);
     const timer = setTimeout(() => setRevealed(true), 100);
     return () => clearTimeout(timer);
   }, [room.id]);
@@ -247,7 +253,45 @@ export function RoomView({
                 <span className="text-sm">{item}</span>
               </button>
             ))}
+
+            {room.journalEntry && !journalFound && !gameState.journalsFound.find(j => j.id === room.journalEntry!.id) && (
+              <button
+                onClick={() => {
+                  setJournalFound(true);
+                  onCollectJournal(room.journalEntry!);
+                  setShowJournal(true);
+                }}
+                className="flex items-center gap-2 px-4 py-2 rounded border border-amber-700/40 text-amber-400 bg-amber-700/10 transition-all duration-300 hover:scale-105 hover:border-amber-600/60 group animate-pulse"
+              >
+                <BookOpen className="w-4 h-4 group-hover:rotate-3 transition-transform" />
+                <span className="text-sm">Read Eleanor's notebook</span>
+              </button>
+            )}
           </div>
+
+          {/* Journal display */}
+          {showJournal && room.journalEntry && (
+            <div
+              className="mt-4 p-4 rounded border border-amber-700/30 space-y-2"
+              style={{ background: 'rgba(30,20,5,0.8)' }}
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-amber-500 text-sm font-bold flex items-center gap-2" style={{ fontFamily: 'Georgia, serif' }}>
+                  <BookOpen className="w-4 h-4" />
+                  {room.journalEntry.title}
+                </span>
+                <button
+                  onClick={() => setShowJournal(false)}
+                  className="text-amber-700/40 hover:text-amber-500/60 text-xs transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+              <p className="text-amber-300/50 text-sm leading-relaxed italic" style={{ fontFamily: 'Georgia, serif' }}>
+                {room.journalEntry.text}
+              </p>
+            </div>
+          )}
 
           {canAdvanceLevel && (
             <div className="pt-4 text-center">
