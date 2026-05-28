@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Theme & Colors -->
+    <meta name="theme-color" content="#1a0a0a" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- iOS / Apple -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Pranksville" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- Windows / Microsoft Store -->
+    <meta name="msapplication-TileImage" content="/icons/icon-144.png" />
+    <meta name="msapplication-TileColor" content="#1a0a0a" />
+    <meta name="msapplication-navbutton-color" content="#1a0a0a" />
+
+    <!-- Samsung / Galaxy Store -->
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- SEO / Store Descriptions -->
+    <title>Pranksville — Manor of Cursed Pranks</title>
+    <meta name="description" content="A terrifying horror game. Explore 50 cursed rooms across 5 levels of a haunted mansion. Survive pranks, collect keys, and escape with your sanity — if you can." />
+    <meta name="keywords" content="horror game, haunted mansion, survival horror, prank game, scary game, puzzle horror" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Pranksville — Manor of Cursed Pranks" />
+    <meta property="og:description" content="50 rooms. 5 levels. Countless terrors. Can you escape the mansion with your sanity intact?" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/icons/icon-512.svg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/icons/icon-512.svg" />
+
+    <!-- Safe area padding for notched devices -->
+    <style>
+      body {
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      }
+    </style>
+  </head>
+  <body class="bg-black overflow-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
