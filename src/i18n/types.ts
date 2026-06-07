@@ -263,4 +263,17 @@ export interface Translations {
   level_4_subtitle: string;
   level_5_name: string;
   level_5_subtitle: string;
+
+  // Share score
+  shareScore: string;
+  shareTitle: string;
+  shareText: string;
+  shareTwitter: string;
+  shareReddit: string;
+  shareFacebook: string;
+  shareCopy: string;
+  shareCopied: string;
+  shareNative: string;
+  shareClose: string;
+  shareScoreCard: string;
 }
