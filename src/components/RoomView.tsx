@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { DoorOpen, Key, Package, Eye, ArrowRight, BookOpen } from 'lucide-react';
 import type { Room, Level, GameState, JournalEntry } from '../game/types';
+import { useT } from '../i18n';
 
 interface RoomViewProps {
   room: Room;
@@ -41,6 +42,7 @@ export function RoomView({
   const [itemsCollected, setItemsCollected] = useState<string[]>([]);
   const [ambientFlicker, setAmbientFlicker] = useState(false);
   const [hoveredExit, setHoveredExit] = useState<string | null>(null);
+  const t = useT();
   const [journalFound, setJournalFound] = useState(false);
   const [showJournal, setShowJournal] = useState(false);
 
@@ -229,7 +231,7 @@ export function RoomView({
                 }}
               >
                 <Eye className="w-4 h-4 group-hover:animate-pulse" />
-                <span className="text-sm">{room.prank.triggerText}</span>
+                <span className="text-sm">{t.examine}</span>
               </button>
             )}
 
@@ -239,7 +241,7 @@ export function RoomView({
                 className="flex items-center gap-2 px-4 py-2 rounded border border-amber-600/40 text-amber-500 bg-amber-600/10 transition-all duration-300 hover:scale-105 hover:border-amber-500/60 group animate-pulse"
               >
                 <Key className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-                <span className="text-sm">Pick up the key</span>
+                <span className="text-sm">{t.pickupKey}</span>
               </button>
             )}
 
@@ -264,7 +266,7 @@ export function RoomView({
                 className="flex items-center gap-2 px-4 py-2 rounded border border-amber-700/40 text-amber-400 bg-amber-700/10 transition-all duration-300 hover:scale-105 hover:border-amber-600/60 group animate-pulse"
               >
                 <BookOpen className="w-4 h-4 group-hover:rotate-3 transition-transform" />
-                <span className="text-sm">Read Eleanor's notebook</span>
+                <span className="text-sm">{t.readNotebook}</span>
               </button>
             )}
           </div>
@@ -284,7 +286,7 @@ export function RoomView({
                   onClick={() => setShowJournal(false)}
                   className="text-amber-700/40 hover:text-amber-500/60 text-xs transition-colors"
                 >
-                  Close
+                  {t.close}
                 </button>
               </div>
               <p className="text-amber-300/50 text-sm leading-relaxed italic" style={{ fontFamily: 'Georgia, serif' }}>
@@ -306,7 +308,7 @@ export function RoomView({
                   boxShadow: `0 0 30px ${level.colorScheme.glow}, inset 0 0 30px ${level.colorScheme.glow}`,
                 }}
               >
-                Descend Deeper
+                {t.descendDeeper}
               </button>
             </div>
           )}
@@ -318,7 +320,7 @@ export function RoomView({
           <div className="flex items-center gap-2 mb-3">
             <DoorOpen className="w-4 h-4" style={{ color: level.colorScheme.accent + '60' }} />
             <span className="text-xs uppercase tracking-[0.3em]" style={{ color: level.colorScheme.accent + '40' }}>
-              Exits
+              {t.exits}
             </span>
           </div>
           <div className="flex flex-wrap gap-2">

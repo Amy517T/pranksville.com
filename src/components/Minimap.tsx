@@ -1,5 +1,6 @@
 import { X } from 'lucide-react';
 import type { Level, GameState } from '../game/types';
+import { useT } from '../i18n';
 
 interface MinimapProps {
   level: Level;
@@ -8,8 +9,10 @@ interface MinimapProps {
 }
 
 export function Minimap({ level, gameState, onClose }: MinimapProps) {
+  const t = useT();
   const rooms = Object.values(level.rooms);
   const visitedRooms = gameState.roomsVisited;
+  const levelName = t[`level_${level.id}_name` as keyof typeof t];
 
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/90 backdrop-blur-sm">
@@ -28,7 +31,7 @@ export function Minimap({ level, gameState, onClose }: MinimapProps) {
 
         <h3 className="text-lg font-bold mb-4 tracking-wider"
           style={{ color: level.colorScheme.accent, fontFamily: 'Georgia, serif' }}>
-          {level.name} — Map
+          {levelName} — {t.map}
         </h3>
 
         <div className="grid grid-cols-3 gap-2">
@@ -63,17 +66,17 @@ export function Minimap({ level, gameState, onClose }: MinimapProps) {
                   <div className="flex items-center gap-1 mt-1">
                     {room.exits.length > 0 && (
                       <span className="text-[10px]" style={{ color: level.colorScheme.accent + '50' }}>
-                        {room.exits.length} exits
+                        {room.exits.length} {t.exits.toLowerCase()}
                       </span>
                     )}
                     {hasKey && isVisited && (
-                      <span className="text-[10px] text-amber-500">Key</span>
+                      <span className="text-[10px] text-amber-500">{t.keys}</span>
                     )}
                   </div>
                 )}
                 {isCurrent && (
                   <div className="mt-1 text-[10px] animate-pulse" style={{ color: level.colorScheme.accent }}>
-                    YOU ARE HERE
+                    {t.youAreHere}
                   </div>
                 )}
               </div>
@@ -82,8 +85,8 @@ export function Minimap({ level, gameState, onClose }: MinimapProps) {
         </div>
 
         <div className="mt-4 flex items-center justify-between text-xs" style={{ color: level.colorScheme.accent + '50' }}>
-          <span>Keys: {gameState.keysFound}/{level.requiredKeys}</span>
-          <span>Rooms visited: {visitedRooms.length}/{rooms.length}</span>
+          <span>{t.keys}: {gameState.keysFound}/{level.requiredKeys}</span>
+          <span>{t.roomsVisited}: {visitedRooms.length}/{rooms.length}</span>
         </div>
       </div>
     </div>

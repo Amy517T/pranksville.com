@@ -1,5 +1,6 @@
 import { X, Package } from 'lucide-react';
 import type { GameState, Level } from '../game/types';
+import { useT } from '../i18n';
 
 interface InventoryProps {
   gameState: GameState;
@@ -8,6 +9,8 @@ interface InventoryProps {
 }
 
 export function Inventory({ gameState, level, onClose }: InventoryProps) {
+  const t = useT();
+
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/90 backdrop-blur-sm">
       <div className="relative max-w-md w-full mx-4 p-6 rounded-lg border"
@@ -26,12 +29,12 @@ export function Inventory({ gameState, level, onClose }: InventoryProps) {
         <h3 className="text-lg font-bold mb-4 tracking-wider flex items-center gap-2"
           style={{ color: level.colorScheme.accent, fontFamily: 'Georgia, serif' }}>
           <Package className="w-5 h-5" />
-          Inventory
+          {t.inventory}
         </h3>
 
         {gameState.inventory.length === 0 ? (
           <p className="text-sm" style={{ color: level.colorScheme.accent + '40' }}>
-            Your pockets are empty. The mansion provides nothing freely.
+            {t.noItems}
           </p>
         ) : (
           <div className="grid grid-cols-2 gap-2">
@@ -53,8 +56,8 @@ export function Inventory({ gameState, level, onClose }: InventoryProps) {
 
         <div className="mt-4 pt-4 border-t" style={{ borderColor: level.colorScheme.accent + '15' }}>
           <div className="text-xs space-y-1" style={{ color: level.colorScheme.accent + '50' }}>
-            <div>Pranks survived: {gameState.pranksTriggered.length}</div>
-            <div>Rooms explored: {gameState.roomsVisited.length}</div>
+            <div>{t.pranks}: {gameState.pranksTriggered.length}</div>
+            <div>{t.roomsVisited}: {gameState.roomsVisited.length}</div>
           </div>
         </div>
       </div>

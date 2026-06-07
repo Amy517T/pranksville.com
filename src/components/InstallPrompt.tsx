@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Download, X } from 'lucide-react';
+import { useT } from '../i18n';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
@@ -7,6 +8,7 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 export function InstallPrompt() {
+  const t = useT();
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
 
@@ -41,14 +43,14 @@ export function InstallPrompt() {
       <div className="flex items-center gap-3">
         <Download className="w-5 h-5 text-amber-500 shrink-0" />
         <div className="flex-1">
-          <p className="text-amber-500 text-sm font-bold">Install Pranksville</p>
-          <p className="text-white/40 text-xs">Play offline. No browser needed. Full horror experience.</p>
+          <p className="text-amber-500 text-sm font-bold">{t.installTitle}</p>
+          <p className="text-white/40 text-xs">{t.installDesc}</p>
         </div>
         <button
           onClick={handleInstall}
           className="px-3 py-1.5 rounded bg-amber-600/20 border border-amber-600/40 text-amber-500 text-xs font-bold hover:bg-amber-600/30 transition-colors"
         >
-          Install
+          {t.installBtn}
         </button>
       </div>
     </div>

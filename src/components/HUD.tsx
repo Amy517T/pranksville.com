@@ -1,5 +1,7 @@
 import { Heart, Key, Map, Ghost, Briefcase } from 'lucide-react';
 import type { GameState, Level } from '../game/types';
+import { useT, useI18n } from '../i18n';
+import { LanguageSelector } from './LanguageSelector';
 
 interface HUDProps {
   gameState: GameState;
@@ -9,8 +11,9 @@ interface HUDProps {
 }
 
 export function HUD({ gameState, currentLevel, onToggleMap, onToggleInventory }: HUDProps) {
+  const t = useT();
   const sanityColor = gameState.sanity > 60 ? '#44cc44' : gameState.sanity > 30 ? '#ccaa22' : '#cc3333';
-  const sanityLabel = gameState.sanity > 60 ? 'Stable' : gameState.sanity > 30 ? 'Shaken' : gameState.sanity > 10 ? 'Terrified' : 'Breaking';
+  const sanityLabel = gameState.sanity > 60 ? t.stable : gameState.sanity > 30 ? t.shaken : gameState.sanity > 10 ? t.terrified : t.breaking;
 
   return (
     <div className="fixed top-0 left-0 right-0 z-30 pointer-events-none">
@@ -45,10 +48,11 @@ export function HUD({ gameState, currentLevel, onToggleMap, onToggleInventory }:
 
         <div className="flex items-center gap-1 text-sm" style={{ color: currentLevel.colorScheme.accent }}>
           <Ghost className="w-4 h-4" />
-          <span>Level {currentLevel.id}</span>
+          <span>{t.level} {currentLevel.id}</span>
         </div>
 
         <div className="flex items-center gap-3">
+          <LanguageSelector variant="compact" />
           <button
             onClick={onToggleInventory}
             className="flex items-center gap-1.5 px-2 py-1 rounded border border-white/10 hover:border-white/20 transition-colors"

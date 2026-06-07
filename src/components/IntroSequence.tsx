@@ -1,32 +1,34 @@
 import { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
+import { useT } from '../i18n';
 
 interface IntroSequenceProps {
   playerName: string;
   onComplete: () => void;
 }
 
-const introLines: { text: string; delay: number }[] = [
-  { text: 'October 13th, 1987.', delay: 1500 },
-  { text: 'You are {name}, investigative journalist for the Camden Courier.', delay: 3000 },
-  { text: 'Three weeks ago, Dr. Eleanor Voss walked into Hargrove Manor and never came out.', delay: 3500 },
-  { text: 'Police found her car in the driveway. Her notebook on the porch. Her voice on the 911 call — cut short.', delay: 3500 },
-  { text: '"Something is wrong with this house. It knows I\'m —"', delay: 2500 },
-  { text: 'Two officers entered the manor the next morning. One left. He doesn\'t speak anymore.', delay: 3500 },
-  { text: 'The town calls it Pranksville — because the house plays tricks. Harmless pranks, they said.', delay: 3500 },
-  { text: 'They stopped saying that after the third disappearance.', delay: 2500 },
-  { text: 'Your editor told you to drop it. Your instincts told you to dig deeper.', delay: 3000 },
-  { text: 'Tonight, you drove to Hargrove Manor alone.', delay: 2500 },
-  { text: 'The iron gate was already open. The front door — unlocked. As if it was expecting you.', delay: 3000 },
-  { text: 'You step inside.', delay: 2000 },
-  { text: 'The door closes behind you.', delay: 2000 },
-  { text: 'It was never a door. It was a mouth.', delay: 2500 },
-];
-
 export function IntroSequence({ playerName, onComplete }: IntroSequenceProps) {
+  const t = useT();
   const [currentLine, setCurrentLine] = useState(0);
   const [displayedLines, setDisplayedLines] = useState<string[]>([]);
   const [fadeComplete, setFadeComplete] = useState(false);
+
+  const introLines: { text: string; delay: number }[] = [
+    { text: t.intro_1, delay: 1500 },
+    { text: t.intro_2.replace('{name}', playerName), delay: 3000 },
+    { text: t.intro_3, delay: 3500 },
+    { text: t.intro_4, delay: 3500 },
+    { text: t.intro_5, delay: 2500 },
+    { text: t.intro_6, delay: 3500 },
+    { text: t.intro_7, delay: 3500 },
+    { text: t.intro_8, delay: 2500 },
+    { text: t.intro_9, delay: 3000 },
+    { text: t.intro_10, delay: 2500 },
+    { text: t.intro_11, delay: 3000 },
+    { text: t.intro_12, delay: 2000 },
+    { text: t.intro_13, delay: 2000 },
+    { text: t.intro_14, delay: 2500 },
+  ];
 
   useEffect(() => {
     if (currentLine >= introLines.length) {
@@ -36,16 +38,15 @@ export function IntroSequence({ playerName, onComplete }: IntroSequenceProps) {
     }
 
     const line = introLines[currentLine];
-    const text = line.text.replace('{name}', playerName);
     const delay = line.delay;
 
     const timer = setTimeout(() => {
-      setDisplayedLines(prev => [...prev, text]);
+      setDisplayedLines(prev => [...prev, line.text]);
       setCurrentLine(prev => prev + 1);
     }, currentLine === 0 ? 800 : delay);
 
     return () => clearTimeout(timer);
-  }, [currentLine, playerName, onComplete]);
+  }, [currentLine]);
 
   return (
     <div

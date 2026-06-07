@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useGameState } from './game/useGameState';
 import { levels } from './game/levels';
 import { playAmbientDrone, playHeartbeat } from './lib/sounds';
+import { useT } from './i18n';
 import { TitleScreen } from './components/TitleScreen';
 import { IntroSequence } from './components/IntroSequence';
 import { RoomView } from './components/RoomView';
@@ -16,6 +17,7 @@ import { Leaderboard, submitToLeaderboard } from './components/Leaderboard';
 import { InstallPrompt } from './components/InstallPrompt';
 
 function App() {
+  const t = useT();
   const {
     gameState,
     phase,
@@ -34,10 +36,10 @@ function App() {
     advanceLevel,
     canAdvanceLevel,
     resetGame,
-    pursuitWarning,
-    ambushMessage,
+    pursuitWarningKey,
+    ambushMessageKey,
     showAmbush,
-    roomEntryMessage,
+    roomEntryMessageKey,
   } = useGameState();
 
   const [showMap, setShowMap] = useState(false);
@@ -45,6 +47,11 @@ function App() {
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [drone, setDrone] = useState<{ stop: () => void } | null>(null);
   const [heartbeatInterval, setHeartbeatInterval] = useState<ReturnType<typeof setInterval> | null>(null);
+
+  // Translate dynamic message keys
+  const pursuitWarning = pursuitWarningKey ? (t as Record<string, string>)[pursuitWarningKey] || pursuitWarningKey : '';
+  const ambushMessage = ambushMessageKey ? (t as Record<string, string>)[ambushMessageKey] || ambushMessageKey : '';
+  const roomEntryMessage = roomEntryMessageKey ? (t as Record<string, string>)[roomEntryMessageKey] || roomEntryMessageKey : '';
 
   useEffect(() => {
     if (phase === 'playing' && !drone) {
@@ -71,11 +78,11 @@ function App() {
 
   useEffect(() => {
     document.title = phase === 'title'
-      ? 'Pranksville — Manor of Cursed Pranks'
+      ? `${t.title} — ${t.subtitle}`
       : phase === 'scare'
-      ? '!!! PRANKSVILLE !!!'
-      : `Pranksville — Level ${gameState.currentLevel}`;
-  }, [phase, gameState.currentLevel]);
+      ? `!!! ${t.title} !!!`
+      : `${t.title} — ${t.level} ${gameState.currentLevel}`;
+  }, [phase, gameState.currentLevel, t]);
 
   useEffect(() => {
     document.body.style.cursor = phase === 'scare' ? 'crosshair' : 'default';
@@ -168,7 +175,7 @@ function App() {
       {phase === 'levelComplete' && (
         <LevelComplete
           level={currentLevel}
-          nextLevelName={levels[gameState.currentLevel]?.name || 'Unknown'}
+          nextLevelName={t[`level_${gameState.currentLevel}_name` as keyof typeof t] || 'Unknown'}
           sanity={gameState.sanity}
           onContinue={handleContinueFromLevelComplete}
         />
@@ -176,7 +183,7 @@ function App() {
 
       {phase === 'gameOver' && (
         <GameOver
-          levelName={currentLevel.name}
+          levelName={t[`level_${gameState.currentLevel}_name` as keyof typeof t] || currentLevel.name}
           pranksTriggered={gameState.pranksTriggered.length}
           gameState={gameState}
           onRestart={resetGame}

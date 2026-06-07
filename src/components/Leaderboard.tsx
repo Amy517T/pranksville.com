@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { X, Trophy, Timer, Heart } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { useT } from '../i18n';
 
 interface LeaderboardEntry {
   id: string;
@@ -24,6 +25,7 @@ function sanitizeDisplayName(name: string): string {
 }
 
 export function Leaderboard({ onClose }: LeaderboardProps) {
+  const t = useT();
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -75,14 +77,14 @@ export function Leaderboard({ onClose }: LeaderboardProps) {
         <h3 className="text-xl font-bold mb-6 tracking-wider flex items-center gap-2 text-amber-500"
           style={{ fontFamily: 'Georgia, serif' }}>
           <Trophy className="w-5 h-5" />
-          Leaderboard
+          {t.leaderboard}
         </h3>
 
         {loading ? (
           <div className="text-center py-8 text-amber-600/40 text-sm">Loading...</div>
         ) : entries.length === 0 ? (
           <div className="text-center py-8 text-amber-600/40 text-sm">
-            No survivors yet. Will you be the first?
+            {t.noSurvivors}
           </div>
         ) : (
           <div className="space-y-2 max-h-96 overflow-y-auto">
@@ -101,7 +103,7 @@ export function Leaderboard({ onClose }: LeaderboardProps) {
                   {entry.user_name}
                 </span>
                 <span className="text-amber-600/50 text-xs flex items-center gap-1">
-                  {entry.levels_completed}/5 levels
+                  {entry.levels_completed}/5 {t.levels}
                 </span>
                 <span className="text-red-400/60 text-xs flex items-center gap-1">
                   <Heart className="w-3 h-3" />
@@ -126,7 +128,6 @@ export async function submitToLeaderboard(
   sanityRemaining: number,
   timeSeconds: number
 ): Promise<boolean> {
-  // Client-side validation before sending to server
   const sanitized = sanitizeDisplayName(playerName);
   if (sanitized.length === 0) return false;
   if (!Number.isInteger(levelsCompleted) || levelsCompleted < 0 || levelsCompleted > 5) return false;

@@ -29,10 +29,10 @@ export function useGameState() {
   const [scareMessage, setScareMessage] = useState('');
   const [scareType, setScareType] = useState<string>('jumpscare');
   const [pursuit, setPursuit] = useState<PursuitState>({ active: false, roomId: null, roomsBehind: 3, message: '' });
-  const [pursuitWarning, setPursuitWarning] = useState('');
-  const [ambushMessage, setAmbushMessage] = useState('');
+  const [pursuitWarningKey, setPursuitWarningKey] = useState('');
+  const [ambushMessageKey, setAmbushMessageKey] = useState('');
   const [showAmbush, setShowAmbush] = useState(false);
-  const [roomEntryMessage, setRoomEntryMessage] = useState('');
+  const [roomEntryMessageKey, setRoomEntryMessageKey] = useState('');
 
   const scareTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const passiveDrainRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -85,15 +85,15 @@ export function useGameState() {
               ...gs,
               sanity: Math.max(0, gs.sanity - 25),
             }));
-            setPursuitWarning('IT IS HERE. RUN.');
-            setTimeout(() => setPursuitWarning(''), 3000);
+            setPursuitWarningKey('pursuit_1');
+            setTimeout(() => setPursuitWarningKey(''), 3000);
             return { active: true, roomId: null, roomsBehind: 3, message: '' };
           } else if (newBehind === 1) {
-            setPursuitWarning('It\'s right behind you.');
-            setTimeout(() => setPursuitWarning(''), 3000);
+            setPursuitWarningKey('pursuit_2');
+            setTimeout(() => setPursuitWarningKey(''), 3000);
           } else if (newBehind === 2) {
-            setPursuitWarning('You hear footsteps matching yours.');
-            setTimeout(() => setPursuitWarning(''), 2000);
+            setPursuitWarningKey('pursuit_3');
+            setTimeout(() => setPursuitWarningKey(''), 2000);
           }
           return { ...prev, roomsBehind: newBehind };
         });
@@ -127,20 +127,9 @@ export function useGameState() {
     });
 
     if (Math.random() < 0.3) {
-      const entryScareMessages = [
-        'Something moved in the corner of your eye.',
-        'You hear a door slam somewhere behind you.',
-        'The temperature drops sharply as you enter.',
-        'A shadow detaches from the wall and vanishes.',
-        'Your ears pop as if the pressure changed.',
-        'You feel watched by something just out of sight.',
-        'A cold hand grazes the back of your neck.',
-        'The floor groans under a weight that isn\'t yours.',
-        'Whispered laughter fades as you cross the threshold.',
-        'For a moment, you forgot your own name.',
-      ];
-      setRoomEntryMessage(entryScareMessages[Math.floor(Math.random() * entryScareMessages.length)]);
-      setTimeout(() => setRoomEntryMessage(''), 3000);
+      const idx = Math.floor(Math.random() * 10) + 1;
+      setRoomEntryMessageKey(`entryScare_${idx}`);
+      setTimeout(() => setRoomEntryMessageKey(''), 3000);
     }
 
     setPursuit(prev => {
@@ -160,26 +149,16 @@ export function useGameState() {
       const delay = 15000 + Math.random() * 30000;
       ambushTimeoutRef.current = setTimeout(() => {
         if (Math.random() < 0.4) {
-          const ambushPranks = [
-            { msg: 'A DECAPITATED HEAD rolls across the floor and stops at your feet, mouth moving silently.', damage: 12 },
-            { msg: 'The walls BLEED. Thick, dark red liquid oozes from the wallpaper, the ceiling, the floor.', damage: 10 },
-            { msg: 'Your own voice calls your name from the next room — but you haven\'t spoken.', damage: 8 },
-            { msg: 'Every mirror in the mansion shatters simultaneously. The sound is deafening.', damage: 15 },
-            { msg: 'A child\'s hand grabs your ankle from under the furniture. You look down — nothing is there.', damage: 10 },
-            { msg: 'The lights go out for 5 seconds. When they return, the furniture has been rearranged.', damage: 8 },
-            { msg: 'You feel a presence step INTO your body. For one second, you are not alone in your skin.', damage: 18 },
-            { msg: 'A noose drops from the ceiling and lands around your neck. It tightens once, then releases.', damage: 14 },
-            { msg: 'Blood drips from the ceiling onto your face. You look up — the ceiling is flesh now.', damage: 12 },
-            { msg: 'Your shadow separates from you, walks to the corner, and turns to watch you.', damage: 16 },
-          ];
-          const prank = ambushPranks[Math.floor(Math.random() * ambushPranks.length)];
-          setAmbushMessage(prank.msg);
+          const idx = Math.floor(Math.random() * 10) + 1;
+          const damages = [12, 10, 8, 15, 10, 8, 18, 14, 12, 16];
+          const damage = damages[idx - 1];
+          setAmbushMessageKey(`ambush_${idx}`);
           setShowAmbush(true);
           setGameState(prev => ({
             ...prev,
-            sanity: Math.max(0, prev.sanity - prank.damage),
+            sanity: Math.max(0, prev.sanity - damage),
           }));
-          setTimeout(() => { setShowAmbush(false); setAmbushMessage(''); }, 3500);
+          setTimeout(() => { setShowAmbush(false); setAmbushMessageKey(''); }, 3500);
         }
         scheduleAmbush();
       }, delay);
@@ -278,10 +257,10 @@ export function useGameState() {
     setPhase('title');
     setScareMessage('');
     setPursuit({ active: false, roomId: null, roomsBehind: 3, message: '' });
-    setPursuitWarning('');
-    setAmbushMessage('');
+    setPursuitWarningKey('');
+    setAmbushMessageKey('');
     setShowAmbush(false);
-    setRoomEntryMessage('');
+    setRoomEntryMessageKey('');
   }, []);
 
   return {
@@ -303,9 +282,9 @@ export function useGameState() {
     canAdvanceLevel,
     resetGame,
     pursuit,
-    pursuitWarning,
-    ambushMessage,
+    pursuitWarningKey,
+    ambushMessageKey,
     showAmbush,
-    roomEntryMessage,
+    roomEntryMessageKey,
   };
 }

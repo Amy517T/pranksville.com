@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Skull, DoorOpen } from 'lucide-react';
 import type { Level } from '../game/types';
+import { useT } from '../i18n';
 
 interface LevelCompleteProps {
   level: Level;
@@ -10,17 +11,24 @@ interface LevelCompleteProps {
 }
 
 export function LevelComplete({ level, nextLevelName, sanity, onContinue }: LevelCompleteProps) {
+  const t = useT();
   const [narrativeIndex, setNarrativeIndex] = useState(0);
   const [showStats, setShowStats] = useState(false);
 
+  const exitNarrative = [
+    t[`level_${level.id}_exit_1` as keyof typeof t],
+    t[`level_${level.id}_exit_2` as keyof typeof t],
+    t[`level_${level.id}_exit_3` as keyof typeof t],
+  ];
+
   useEffect(() => {
-    if (narrativeIndex < level.exitNarrative.length) {
+    if (narrativeIndex < exitNarrative.length) {
       const timer = setTimeout(() => setNarrativeIndex(prev => prev + 1), 2500);
       return () => clearTimeout(timer);
     } else {
       setTimeout(() => setShowStats(true), 800);
     }
-  }, [narrativeIndex, level.exitNarrative.length]);
+  }, [narrativeIndex, exitNarrative.length]);
 
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-black">
@@ -35,7 +43,7 @@ export function LevelComplete({ level, nextLevelName, sanity, onContinue }: Leve
         <Skull className="w-16 h-16 mx-auto mb-6" style={{ color: level.colorScheme.accent, filter: `drop-shadow(0 0 20px ${level.colorScheme.glow})` }} />
 
         <p className="text-xs uppercase tracking-[0.5em] mb-2" style={{ color: level.colorScheme.accent + '50' }}>
-          Level {level.id} Survived
+          {t.levelSurvived.replace('{level}', String(level.id))}
         </p>
 
         <h2 className="text-4xl font-bold mb-3" style={{
@@ -43,16 +51,15 @@ export function LevelComplete({ level, nextLevelName, sanity, onContinue }: Leve
           textShadow: `0 0 30px ${level.colorScheme.glow}`,
           fontFamily: 'Georgia, serif',
         }}>
-          {level.name}
+          {t[`level_${level.id}_name` as keyof typeof t]}
         </h2>
 
         <p className="text-lg mb-6 italic" style={{ color: level.colorScheme.accent + '60' }}>
-          "{level.subtitle}"
+          "{t[`level_${level.id}_subtitle` as keyof typeof t]}"
         </p>
 
-        {/* Narrative transition */}
         <div className="mb-8 space-y-3 min-h-[80px]">
-          {level.exitNarrative.slice(0, narrativeIndex).map((line, i) => (
+          {exitNarrative.slice(0, narrativeIndex).map((line, i) => (
             <p
               key={i}
               className="text-sm leading-relaxed transition-all duration-700"
@@ -75,7 +82,7 @@ export function LevelComplete({ level, nextLevelName, sanity, onContinue }: Leve
                   {sanity}%
                 </div>
                 <div className="text-xs uppercase tracking-wider" style={{ color: level.colorScheme.accent + '40' }}>
-                  Sanity
+                  {t.sanityStat}
                 </div>
               </div>
             </div>
@@ -92,7 +99,7 @@ export function LevelComplete({ level, nextLevelName, sanity, onContinue }: Leve
               }}
             >
               <DoorOpen className="w-5 h-5" />
-              Enter: {nextLevelName}
+              {nextLevelName}
               <ArrowRight className="w-5 h-5" />
             </button>
           </>

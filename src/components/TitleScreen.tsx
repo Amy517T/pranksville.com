@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Skull, DoorOpen, Trophy } from 'lucide-react';
+import { useT } from '../i18n';
+import { LanguageSelector } from './LanguageSelector';
 
 interface TitleScreenProps {
   onStart: (playerName: string) => void;
@@ -7,6 +9,7 @@ interface TitleScreenProps {
 }
 
 export function TitleScreen({ onStart, onShowLeaderboard }: TitleScreenProps) {
+  const t = useT();
   const [playerName, setPlayerName] = useState('');
   const [flicker, setFlicker] = useState(false);
   const [showContent, setShowContent] = useState(false);
@@ -35,12 +38,12 @@ export function TitleScreen({ onStart, onShowLeaderboard }: TitleScreenProps) {
 
         <h1 className={`text-5xl md:text-7xl font-bold text-red-900 tracking-widest mb-2 transition-opacity duration-75 ${flicker ? 'opacity-40' : 'opacity-100'}`}
           style={{ fontFamily: 'Georgia, serif', textShadow: '0 0 40px rgba(200,0,0,0.5), 0 0 80px rgba(150,0,0,0.3)' }}>
-          PRANKSVILLE
+          {t.title}
         </h1>
 
         <p className="text-red-800/60 text-lg tracking-[0.3em] mb-12 uppercase"
           style={{ textShadow: '0 0 20px rgba(200,0,0,0.3)' }}>
-          Manor of Cursed Pranks
+          {t.subtitle}
         </p>
 
         <div className="flex flex-col items-center gap-4 mb-8 w-full max-w-xs">
@@ -49,7 +52,7 @@ export function TitleScreen({ onStart, onShowLeaderboard }: TitleScreenProps) {
             value={playerName}
             onChange={(e) => setPlayerName(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleStart()}
-            placeholder="Enter your name, if you dare..."
+            placeholder={t.enterName}
             maxLength={20}
             className="w-full px-4 py-3 bg-black/80 border border-red-900/40 text-red-200 placeholder-red-900/40 rounded text-center focus:outline-none focus:border-red-700/60 transition-colors"
             style={{ textShadow: '0 0 10px rgba(200,0,0,0.2)' }}
@@ -62,8 +65,10 @@ export function TitleScreen({ onStart, onShowLeaderboard }: TitleScreenProps) {
             style={{ textShadow: '0 0 10px rgba(200,0,0,0.3)' }}
           >
             <DoorOpen className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            <span className="tracking-widest uppercase text-sm">Enter the Mansion</span>
+            <span className="tracking-widest uppercase text-sm">{t.enterMansion}</span>
           </button>
+
+          <LanguageSelector variant="full" />
         </div>
 
         <button
@@ -71,12 +76,12 @@ export function TitleScreen({ onStart, onShowLeaderboard }: TitleScreenProps) {
           className="px-4 py-2 text-red-900/50 hover:text-red-700/70 text-sm tracking-wider uppercase transition-colors flex items-center gap-2"
         >
           <Trophy className="w-4 h-4" />
-          Leaderboard
+          {t.leaderboard}
         </button>
       </div>
 
       <div className="absolute bottom-4 text-red-900/20 text-xs tracking-widest">
-        5 LEVELS / 50 ROOMS / COUNTLESS TERRORS
+        {t.footerInfo}
       </div>
     </div>
   );
