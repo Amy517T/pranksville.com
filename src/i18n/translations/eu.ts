@@ -182,4 +182,18 @@ export const eu: Translations = {
   level_4_subtitle: 'Non Ispuluek Haien Asmoak Badute',
   level_5_name: 'Jauregiko Bihotza',
   level_5_subtitle: 'Non Betiko Itxaroan Dago',
+
+
+  // Share score
+  shareScore: 'Partekatu Puntuazioa',
+  shareTitle: 'Pranksville-tik ihes egin nuen!',
+  shareText: 'Manor of Cursed Pranks-etik {time}an {sanity}% adimen batekin ateratu nuen. Hobekuntza egin dezakezu?',
+  shareTwitter: 'Partekatu X-en',
+  shareReddit: 'Partekatu Reddit-en',
+  shareFacebook: 'Partekatu Facebook-en',
+  shareCopy: 'Kopiatu esteka',
+  shareCopied: 'Kopiatuta!',
+  shareNative: 'Partekatu',
+  shareClose: 'Itxi',
+  shareScoreCard: 'Puntuazio Txartela',
 };

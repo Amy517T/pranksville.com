@@ -183,4 +183,18 @@ export const ca: Translations = {
   level_4_subtitle: 'On els reflexes tene les seves própies intencions',
   level_5_name: 'El Cor de la Mansió',
   level_5_subtitle: 'On ha estat esperant sempre',
+
+
+  // Share score
+  shareScore: 'Compartir puntuació',
+  shareTitle: 'He escapat de Pranksville!',
+  shareText: 'He sobreviscut a Manor of Cursed Pranks amb {sanity}% cordura en {time}. Pots fer-ho millor?',
+  shareTwitter: 'Compartir a X',
+  shareReddit: 'Compartir a Reddit',
+  shareFacebook: 'Compartir a Facebook',
+  shareCopy: 'Copiar enllaç',
+  shareCopied: 'Copiat!',
+  shareNative: 'Compartir',
+  shareClose: 'Tancar',
+  shareScoreCard: 'Targeta de puntuació',
 };

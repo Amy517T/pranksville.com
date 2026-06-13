@@ -183,4 +183,17 @@ export const ar: Translations = {
   level_4_subtitle: 'حيث للانعكاسات نواياها الخاصة',
   level_5_name: 'قلب القصر',
   level_5_subtitle: 'حيث كان ينتظر دائماً',
+
+  // Share score
+  shareScore: 'شارك الدرجة',
+  shareTitle: 'لقد هربت من برانكسفيل!',
+  shareText: 'لقد نجحت من Manor of Cursed Pranks مع {sanity}% عقل في {time}. هل يمكنك فعل أفضل؟',
+  shareTwitter: 'شارك على X',
+  shareReddit: 'شارك على Reddit',
+  shareFacebook: 'شارك على Facebook',
+  shareCopy: 'انسخ الرابط',
+  shareCopied: 'تم النسخ!',
+  shareNative: 'شارك',
+  shareClose: 'إغلق',
+  shareScoreCard: 'بطاقة الدرجة',
 };

@@ -183,4 +183,18 @@ export const lt: Translations = {
   level_4_subtitle: 'Kur atspindžiai turi savo ketinimus',
   level_5_name: 'Pilies širdis',
   level_5_subtitle: 'Kur jis visada buvo laukinant',
+
+
+  // Share score
+  shareScore: 'Dalintis Rezultatu',
+  shareTitle: 'Pabėgau iš Pranksville!',
+  shareText: 'Išgyvenau Manor of Cursed Pranks su {sanity}% proto {time} laikotarpiu. Ar gali geriau?',
+  shareTwitter: 'Dalintis X',
+  shareReddit: 'Dalintis Reddit',
+  shareFacebook: 'Dalintis Facebook',
+  shareCopy: 'Kopijuoti nuorodą',
+  shareCopied: 'Nukopijuota!',
+  shareNative: 'Dalintis',
+  shareClose: 'Uždaryti',
+  shareScoreCard: 'Rezultatų kortelė',
 };

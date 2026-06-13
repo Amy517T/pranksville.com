@@ -183,4 +183,18 @@ export const sk: Translations = {
   level_4_subtitle: 'Kde odrazy majú svoje zámery',
   level_5_name: 'Srdce Zámočku',
   level_5_subtitle: 'Kde vždy čakalo',
+
+
+  // Share score
+  shareScore: 'Zdieľať skóre',
+  shareTitle: 'Unikol som z Pranksville!',
+  shareText: 'Prežil som Manor of Cursed Pranks so {sanity}% rozumom za {time}. Zvládneš to lepšie?',
+  shareTwitter: 'Zdieľať na X',
+  shareReddit: 'Zdieľať na Reddite',
+  shareFacebook: 'Zdieľať na Facebooku',
+  shareCopy: 'Kopírovať odkaz',
+  shareCopied: 'Skopírované!',
+  shareNative: 'Zdieľať',
+  shareClose: 'Zatvoriť',
+  shareScoreCard: 'Karta skóre',
 };

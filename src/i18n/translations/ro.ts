@@ -183,4 +183,18 @@ export const ro: Translations = {
   level_4_subtitle: 'Unde reflexele au propriile intențiuni',
   level_5_name: 'Inima Conacului',
   level_5_subtitle: 'Unde a așteptat mereu',
+
+
+  // Share score
+  shareScore: 'Partajează Punctajul',
+  shareTitle: 'Am scăpat de Pranksville!',
+  shareText: 'Am supraviețuit Manor of Cursed Pranks cu {sanity}% minte în {time}. Poți face mai bine?',
+  shareTwitter: 'Partajează pe X',
+  shareReddit: 'Partajează pe Reddit',
+  shareFacebook: 'Partajează pe Facebook',
+  shareCopy: 'Copiază legătura',
+  shareCopied: 'Copiat!',
+  shareNative: 'Partajează',
+  shareClose: 'Închide',
+  shareScoreCard: 'Cardul de punctaj',
 };

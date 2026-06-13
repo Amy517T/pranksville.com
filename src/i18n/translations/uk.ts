@@ -183,4 +183,18 @@ export const uk: Translations = {
   level_4_subtitle: 'Де відображення мають свої наміри',
   level_5_name: 'Серце Маєтку',
   level_5_subtitle: 'Де воно завжди чекало',
+
+
+  // Share score
+  shareScore: 'Поділитися результатом',
+  shareTitle: 'Я втік з Pranksville!',
+  shareText: 'Я пережив Manor of Cursed Pranks з {sanity}% розуму за {time}. Можеш ли ти зробити краще?',
+  shareTwitter: 'Поділитися на X',
+  shareReddit: 'Поділитися на Reddit',
+  shareFacebook: 'Поділитися на Facebook',
+  shareCopy: 'Скопіювати посилання',
+  shareCopied: 'Скопійовано!',
+  shareNative: 'Поділитися',
+  shareClose: 'Закрити',
+  shareScoreCard: 'Карточка результатів',
 };

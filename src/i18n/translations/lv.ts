@@ -183,4 +183,18 @@ export const lv: Translations = {
   level_4_subtitle: 'Kur atspuļi ir savi nolūki',
   level_5_name: 'Muižas sirds',
   level_5_subtitle: 'Kur tas vienmēr ir gaidīts',
+
+
+  // Share score
+  shareScore: 'Dalītie rezultātu',
+  shareTitle: 'Es bēgu no Pranksville!',
+  shareText: 'Es izdzīvāju Manor of Cursed Pranks ar {sanity}% prāta {time} laikā. Vai vari labāk?',
+  shareTwitter: 'Dalīties X',
+  shareReddit: 'Dalīties Reddit',
+  shareFacebook: 'Dalīties Facebook',
+  shareCopy: 'Kopēt saiti',
+  shareCopied: 'Nokopēts!',
+  shareNative: 'Dalīties',
+  shareClose: 'Aizvērt',
+  shareScoreCard: 'Rezultātu karte',
 };

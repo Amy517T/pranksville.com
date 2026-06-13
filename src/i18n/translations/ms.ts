@@ -183,4 +183,18 @@ export const ms: Translations = {
   level_4_subtitle: 'Tempat pantulan mempunyai tujuan mereka sendiri',
   level_5_name: 'Jantung Manor',
   level_5_subtitle: 'Tempat ia sentiasa menunggu',
+
+
+  // Share score
+  shareScore: 'Kongsikan Skor',
+  shareTitle: 'Aku Lari dari Pranksville!',
+  shareText: 'Aku Terselamat dari Manor of Cursed Pranks dengan {sanity}% akal dalam {time}. Boleh kamu lebih baik?',
+  shareTwitter: 'Kongsikan di X',
+  shareReddit: 'Kongsikan di Reddit',
+  shareFacebook: 'Kongsikan di Facebook',
+  shareCopy: 'Salin Pautan',
+  shareCopied: 'Disalin!',
+  shareNative: 'Kongsikan',
+  shareClose: 'Tutup',
+  shareScoreCard: 'Kad Skor',
 };

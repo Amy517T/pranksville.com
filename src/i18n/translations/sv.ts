@@ -183,4 +183,18 @@ export const sv: Translations = {
   level_4_subtitle: 'Där reflektioner har sina egna avsikter',
   level_5_name: 'Herrgårdens hjärta',
   level_5_subtitle: 'Där det alltid väntade',
+
+
+  // Share score
+  shareScore: 'Dela Poäng',
+  shareTitle: 'Jag slapp från Pranksville!',
+  shareText: 'Jag överlevde Manor of Cursed Pranks med {sanity}% sanitet på {time}. Kan du göra det bättre?',
+  shareTwitter: 'Dela på X',
+  shareReddit: 'Dela på Reddit',
+  shareFacebook: 'Dela på Facebook',
+  shareCopy: 'Kopiera länk',
+  shareCopied: 'Kopierad!',
+  shareNative: 'Dela',
+  shareClose: 'Stäng',
+  shareScoreCard: 'Poängkort',
 };

@@ -183,4 +183,18 @@ export const fa: Translations = {
   level_4_subtitle: 'جایی‌که انعکاس‌ها نیات خود دارند',
   level_5_name: 'قلب قصر',
   level_5_subtitle: 'جایی‌که همیشه در انتظار بوده است',
+
+
+  // Share score
+  shareScore: 'اشتراک امتیاز',
+  shareTitle: 'من از Pranksville فرار کردم!',
+  shareText: 'من تمانای خانه تاریک را با {sanity}٪ عقل در {time} پیمودم. آیا می‌توانی بهتر انجام دهی؟',
+  shareTwitter: 'اشتراک در X',
+  shareReddit: 'اشتراک در Reddit',
+  shareFacebook: 'اشتراک در Facebook',
+  shareCopy: 'کپی پیوند',
+  shareCopied: 'کپی شد!',
+  shareNative: 'اشتراک',
+  shareClose: 'بستن',
+  shareScoreCard: 'کارت امتیاز',
 };

@@ -183,4 +183,18 @@ export const ja: Translations = {
   level_4_subtitle: '反射が自分たちの意図を持つ場所',
   level_5_name: 'マンションの心臓',
   level_5_subtitle: 'それがいつも待っていた場所',
+
+
+  // Share score
+  shareScore: 'スコアを共有',
+  shareTitle: 'Pranksvilleから脱出しました!',
+  shareText: '{time}で{sanity}%の正気でManor of Cursed Pranksから生き残りました。もっと上手くできますか?',
+  shareTwitter: 'Xで共有',
+  shareReddit: 'Redditで共有',
+  shareFacebook: 'Facebookで共有',
+  shareCopy: 'リンクをコピー',
+  shareCopied: 'コピーしました!',
+  shareNative: '共有',
+  shareClose: '閉じる',
+  shareScoreCard: 'スコアカード',
 };

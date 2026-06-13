@@ -183,4 +183,18 @@ export const zh: Translations = {
   level_4_subtitle: '倒影有自己意图的地方',
   level_5_name: '庄园的心脏',
   level_5_subtitle: '它一直在等待的地方',
+
+
+  // Share score
+  shareScore: '分享得分',
+  shareTitle: '我逃离了Pranksville!',
+  shareText: '我以{sanity}%的理智在{time}内存活了Manor of Cursed Pranks。你能做得更好吗?',
+  shareTwitter: '在X上分享',
+  shareReddit: '在Reddit上分享',
+  shareFacebook: '在Facebook上分享',
+  shareCopy: '复制链接',
+  shareCopied: '已复制!',
+  shareNative: '分享',
+  shareClose: '关闭',
+  shareScoreCard: '分数卡',
 };

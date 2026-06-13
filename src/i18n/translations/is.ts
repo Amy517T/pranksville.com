@@ -183,4 +183,18 @@ export const is: Translations = {
   level_4_subtitle: 'Þar sem speglingar hafa eigin fyrirtæki',
   level_5_name: 'Hjartað herðaðar',
   level_5_subtitle: 'Þar sem það bíddi alltaf',
+
+
+  // Share score
+  shareScore: 'Deila stigum',
+  shareTitle: 'Ég komst burt frá Pranksville!',
+  shareText: 'Ég lifði af Manor of Cursed Pranks með {sanity}% vitum á {time}. Getur þú gert betur?',
+  shareTwitter: 'Deila á X',
+  shareReddit: 'Deila á Reddit',
+  shareFacebook: 'Deila á Facebook',
+  shareCopy: 'Afrita tengil',
+  shareCopied: 'Afrituð!',
+  shareNative: 'Deila',
+  shareClose: 'Loka',
+  shareScoreCard: 'Stigakort',
 };

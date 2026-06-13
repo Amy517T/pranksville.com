@@ -183,4 +183,18 @@ export const pa: Translations = {
   level_4_subtitle: 'ਜ ਪ ਦ।',
   level_5_name: 'ਘ ਦ',
   level_5_subtitle: 'ਜ ਹ ਉ।',
+
+
+  // Share score
+  shareScore: 'ਸਕੋਰ ਸਾਂਝਾ ਕਰੋ',
+  shareTitle: 'ਮੈਂ Pranksville ਤੋਂ ਭੱਜ ਗਿਆ!',
+  shareText: 'ਮੈਂ Manor of Cursed Pranks ਤੋਂ {time} ਵਿੱਚ {sanity}% ਅਕਲ ਦੇ ਨਾਲ ਬਚ ਗਿਆ। ਕੀ ਤੂੰ ਚੰਗਾ ਕਰ ਸਕਦਾ ਹਾਂ?',
+  shareTwitter: 'X \'ਤੇ ਸਾਂਝਾ ਕਰੋ',
+  shareReddit: 'Reddit \'ਤੇ ਸਾਂਝਾ ਕਰੋ',
+  shareFacebook: 'Facebook \'ਤੇ ਸਾਂਝਾ ਕਰੋ',
+  shareCopy: 'ਲਿੰਕ ਕਾਪੀ ਕਰੋ',
+  shareCopied: 'ਕਾਪੀ ਕੀਤਾ ਗਿਆ!',
+  shareNative: 'ਸਾਂਝਾ ਕਰੋ',
+  shareClose: 'ਬੰਦ ਕਰੋ',
+  shareScoreCard: 'ਸਕੋਰ ਕਾਰਡ',
 };

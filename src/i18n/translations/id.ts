@@ -183,4 +183,18 @@ export const id: Translations = {
   level_4_subtitle: 'Di mana refleksi memiliki niat mereka sendiri',
   level_5_name: 'Hati Mansion',
   level_5_subtitle: 'Di mana itu selalu menunggu',
+
+
+  // Share score
+  shareScore: 'Bagikan Skor',
+  shareTitle: 'Aku Lolos dari Pranksville!',
+  shareText: 'Aku Selamat dari Manor of Cursed Pranks dengan {sanity}% akal sehat dalam {time}. Bisakah kamu melakukan lebih baik?',
+  shareTwitter: 'Bagikan di X',
+  shareReddit: 'Bagikan di Reddit',
+  shareFacebook: 'Bagikan di Facebook',
+  shareCopy: 'Salin Tautan',
+  shareCopied: 'Tersalin!',
+  shareNative: 'Bagikan',
+  shareClose: 'Tutup',
+  shareScoreCard: 'Kartu Skor',
 };

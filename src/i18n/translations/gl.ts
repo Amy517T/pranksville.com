@@ -183,4 +183,18 @@ export const gl: Translations = {
   level_4_subtitle: 'Onde os reflexos teñen as súas propias intencións',
   level_5_name: 'O Corazón da Mansión',
   level_5_subtitle: 'Onde sempre estouveestando esperando',
+
+
+  // Share score
+  shareScore: 'Compartir Puntuación',
+  shareTitle: 'Escapei de Pranksville!',
+  shareText: 'Sobreviví a Manor of Cursed Pranks con {sanity}% cordura en {time}. Podes facerlo mellor?',
+  shareTwitter: 'Compartir en X',
+  shareReddit: 'Compartir en Reddit',
+  shareFacebook: 'Compartir en Facebook',
+  shareCopy: 'Copiar ligazón',
+  shareCopied: 'Copiado!',
+  shareNative: 'Compartir',
+  shareClose: 'Pechar',
+  shareScoreCard: 'Tarxeta de Puntuación',
 };

@@ -183,4 +183,18 @@ export const hi: Translations = {
   level_4_subtitle: 'जहां परावर्तन के अपने इरादे हैं',
   level_5_name: 'भवन का दिल',
   level_5_subtitle: 'जहां वह हमेशा प्रतीक्षा कर रहा है',
+
+
+  // Share score
+  shareScore: 'स्कोर साझा करें',
+  shareTitle: 'मैं Pranksville से बच गया!',
+  shareText: 'मैं {time} में {sanity}% सेहत के साथ Manor of Cursed Pranks से बच गया। क्या तुम बेहतर कर सकते हो?',
+  shareTwitter: 'X पर साझा करें',
+  shareReddit: 'Reddit पर साझा करें',
+  shareFacebook: 'Facebook पर साझा करें',
+  shareCopy: 'लिंक कॉपी करें',
+  shareCopied: 'कॉपी किया गया!',
+  shareNative: 'साझा करें',
+  shareClose: 'बंद करें',
+  shareScoreCard: 'स्कोर कार्ड',
 };

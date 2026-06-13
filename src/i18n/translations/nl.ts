@@ -183,4 +183,18 @@ export const nl: Translations = {
   level_4_subtitle: 'Waar spiegelbeelden hun eigen bedoelingen hebben',
   level_5_name: 'Het Hart van het Herenhuis',
   level_5_subtitle: 'Waar het altijd heeft gewacht',
+
+
+  // Share score
+  shareScore: 'Score delen',
+  shareTitle: 'Ik ben ontsnapt aan Pranksville!',
+  shareText: 'Ik ben ontsnapt aan Manor of Cursed Pranks met {sanity}% gezond verstand in {time}. Kun je het beter doen?',
+  shareTwitter: 'Delen op X',
+  shareReddit: 'Delen op Reddit',
+  shareFacebook: 'Delen op Facebook',
+  shareCopy: 'Link kopiëren',
+  shareCopied: 'Gekopieerd!',
+  shareNative: 'Delen',
+  shareClose: 'Sluiten',
+  shareScoreCard: 'Scorekaart',
 };

@@ -183,4 +183,18 @@ export const hu: Translations = {
   level_4_subtitle: 'Ahol az visszatükrözések az saját szándékaik van',
   level_5_name: 'Az kúria szíve',
   level_5_subtitle: 'Ahol az az az az volt várakozik',
+
+
+  // Share score
+  shareScore: 'Pontszám megosztása',
+  shareTitle: 'Megmenekültem a Pranksville-ből!',
+  shareText: 'Túlélétem a Manor of Cursed Pranks-t {sanity}% eszszerűséggel {time} alatt. Tudsz jobbat?',
+  shareTwitter: 'Megosztás az X-en',
+  shareReddit: 'Megosztás a Redditen',
+  shareFacebook: 'Megosztás a Facebookon',
+  shareCopy: 'Hivatkozás másolása',
+  shareCopied: 'Másolva!',
+  shareNative: 'Megosztás',
+  shareClose: 'Bezárás',
+  shareScoreCard: 'Pontszám kártya',
 };

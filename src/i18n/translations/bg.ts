@@ -183,4 +183,18 @@ export const bg: Translations = {
   level_4_subtitle: 'Където отражения имат свои намерения',
   level_5_name: 'Сърце на Имението',
   level_5_subtitle: 'Където винаги е чакало',
+
+
+  // Share score
+  shareScore: 'Споделяне на оценка',
+  shareTitle: 'Избягах от Pranksville!',
+  shareText: 'Оцелях от Manor of Cursed Pranks с {sanity}% разум в {time}. Можеш ли да го направиш по-добре?',
+  shareTwitter: 'Поделяй на X',
+  shareReddit: 'Поделяй на Reddit',
+  shareFacebook: 'Поделяй на Facebook',
+  shareCopy: 'Копиране на връзка',
+  shareCopied: 'Копирано!',
+  shareNative: 'Поделяй',
+  shareClose: 'Затвори',
+  shareScoreCard: 'Карта с оценка',
 };

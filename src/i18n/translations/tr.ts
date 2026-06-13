@@ -183,4 +183,18 @@ export const tr: Translations = {
   level_4_subtitle: 'Yansımaların Kendi Niyetleri Olduğu Yer',
   level_5_name: 'Malikanenin Kalbi',
   level_5_subtitle: 'Her Zaman Beklediği Yer',
+
+
+  // Share score
+  shareScore: 'Puanı Paylaş',
+  shareTitle: 'Pranksville\'den kaçtım!',
+  shareText: '{time} içinde {sanity}% aklı sağlam olarak Manor of Cursed Pranks\'ten kurtuldum. Daha iyi yapabilir misin?',
+  shareTwitter: 'X\'te Paylaş',
+  shareReddit: 'Reddit\'te Paylaş',
+  shareFacebook: 'Facebook\'ta Paylaş',
+  shareCopy: 'Bağlantıyı Kopyala',
+  shareCopied: 'Kopyalandı!',
+  shareNative: 'Paylaş',
+  shareClose: 'Kapat',
+  shareScoreCard: 'Puan Kartı',
 };

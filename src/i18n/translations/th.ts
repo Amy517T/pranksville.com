@@ -183,4 +183,18 @@ export const th: Translations = {
   level_4_subtitle: 'ที่ที่การสะท้อนมีเจตนาของตัวเอง',
   level_5_name: 'หัวใจของแมนชั่น',
   level_5_subtitle: 'ที่ที่มันเคยรอ',
+
+
+  // Share score
+  shareScore: 'แชร์คะแนน',
+  shareTitle: 'ฉันหลบหนีจาก Pranksville!',
+  shareText: 'ฉันรอดชีวิตจาก Manor of Cursed Pranks ด้วยสติ {sanity}% ใน {time} ทำได้ดีกว่านั้นไหม?',
+  shareTwitter: 'แชร์บน X',
+  shareReddit: 'แชร์บน Reddit',
+  shareFacebook: 'แชร์บน Facebook',
+  shareCopy: 'คัดลอกลิงก์',
+  shareCopied: 'คัดลอกแล้ว!',
+  shareNative: 'แชร์',
+  shareClose: 'ปิด',
+  shareScoreCard: 'การ์ดคะแนน',
 };

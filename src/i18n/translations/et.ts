@@ -183,4 +183,18 @@ export const et: Translations = {
   level_4_subtitle: 'Kus peegeldistel on oma kavatsused',
   level_5_name: 'Mõisa Süda',
   level_5_subtitle: 'Kus ta on alati oodanud',
+
+
+  // Share score
+  shareScore: 'Jaga skoori',
+  shareTitle: 'Põgenesin Pranksville\'ist!',
+  shareText: 'Jäin ellu Manor of Cursed Pranks\'ist {sanity}% mõistusega {time} jooksul. Kas sa teed paremini?',
+  shareTwitter: 'Jaga X-il',
+  shareReddit: 'Jaga Redditis',
+  shareFacebook: 'Jaga Facebookis',
+  shareCopy: 'Kopeeri link',
+  shareCopied: 'Kopeeritud!',
+  shareNative: 'Jaga',
+  shareClose: 'Sulge',
+  shareScoreCard: 'Skoorikaart',
 };

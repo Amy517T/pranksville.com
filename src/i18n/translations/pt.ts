@@ -183,4 +183,18 @@ export const pt: Translations = {
   level_4_subtitle: 'Onde os reflexos têm suas próprias intenções',
   level_5_name: 'O Coração do Solar',
   level_5_subtitle: 'Onde ele sempre esteve esperando',
+
+
+  // Share score
+  shareScore: 'Partilhar Pontuação',
+  shareTitle: 'Escapei de Pranksville!',
+  shareText: 'Sobrevivi ao Manor of Cursed Pranks com {sanity}% sanidade em {time}. Consegues fazer melhor?',
+  shareTwitter: 'Partilhar no X',
+  shareReddit: 'Partilhar no Reddit',
+  shareFacebook: 'Partilhar no Facebook',
+  shareCopy: 'Copiar Ligação',
+  shareCopied: 'Copiado!',
+  shareNative: 'Partilhar',
+  shareClose: 'Fechar',
+  shareScoreCard: 'Cartão de Pontuação',
 };

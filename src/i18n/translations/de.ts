@@ -183,4 +183,18 @@ export const de: Translations = {
   level_4_subtitle: 'Wo Spiegelbilder ihre eigenen Absichten haben',
   level_5_name: 'Das Herz des Herrenhauses',
   level_5_subtitle: 'Wo es immer gewartet hat',
+
+
+  // Share score
+  shareScore: 'Punkte teilen',
+  shareTitle: 'Ich bin aus Pranksville entkommen!',
+  shareText: 'Ich habe Manor of Cursed Pranks mit {sanity}% Verstand in {time} überlebt. Kannst du es besser machen?',
+  shareTwitter: 'Auf X teilen',
+  shareReddit: 'Auf Reddit teilen',
+  shareFacebook: 'Auf Facebook teilen',
+  shareCopy: 'Link kopieren',
+  shareCopied: 'Kopiert!',
+  shareNative: 'Teilen',
+  shareClose: 'Schließen',
+  shareScoreCard: 'Punktekarte',
 };

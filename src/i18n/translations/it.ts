@@ -183,4 +183,18 @@ export const it: Translations = {
   level_4_subtitle: 'Dove i riflessi hanno le loro intenzioni',
   level_5_name: 'Il Cuore del Maniero',
   level_5_subtitle: 'Dove è sempre stato in attesa',
+
+
+  // Share score
+  shareScore: 'Condividi Punteggio',
+  shareTitle: 'Sono fuggito da Pranksville!',
+  shareText: 'Ho sopravvissuto a Manor of Cursed Pranks con {sanity}% sanità in {time}. Puoi fare meglio?',
+  shareTwitter: 'Condividi su X',
+  shareReddit: 'Condividi su Reddit',
+  shareFacebook: 'Condividi su Facebook',
+  shareCopy: 'Copia collegamento',
+  shareCopied: 'Copiato!',
+  shareNative: 'Condividi',
+  shareClose: 'Chiudi',
+  shareScoreCard: 'Scheda punteggio',
 };

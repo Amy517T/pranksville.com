@@ -183,4 +183,18 @@ export const tl: Translations = {
   level_4_subtitle: 'Kung saan ang mga reflection ay may kanilang sariling layunin',
   level_5_name: 'Ang Puso ng Mansyon',
   level_5_subtitle: 'Kung saan ito ay palaging naghihintay',
+
+
+  // Share score
+  shareScore: 'Ibahagi ang Marka',
+  shareTitle: 'Nakatakas ako mula sa Pranksville!',
+  shareText: 'Nanatiling buhay ako sa Manor of Cursed Pranks na may {sanity}% kaluluwa sa {time}. Kaya mo bang mas mabuti?',
+  shareTwitter: 'Ibahagi sa X',
+  shareReddit: 'Ibahagi sa Reddit',
+  shareFacebook: 'Ibahagi sa Facebook',
+  shareCopy: 'Kopyo ang Link',
+  shareCopied: 'Nakopya!',
+  shareNative: 'Ibahagi',
+  shareClose: 'Isara',
+  shareScoreCard: 'Marka ng Card',
 };

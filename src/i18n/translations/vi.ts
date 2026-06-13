@@ -183,4 +183,18 @@ export const vi: Translations = {
   level_4_subtitle: 'Nơi phản chiếu có ý định riêng của họ',
   level_5_name: 'Trái tim của Điền trang trại',
   level_5_subtitle: 'Nơi nó luôn chờ đợi',
+
+
+  // Share score
+  shareScore: 'Chia sẻ Điểm số',
+  shareTitle: 'Tôi đã thoát khỏi Pranksville!',
+  shareText: 'Tôi sống sót được Manor of Cursed Pranks với {sanity}% lý trí trong {time}. Bạn có thể làm tốt hơn không?',
+  shareTwitter: 'Chia sẻ trên X',
+  shareReddit: 'Chia sẻ trên Reddit',
+  shareFacebook: 'Chia sẻ trên Facebook',
+  shareCopy: 'Sao chép liên kết',
+  shareCopied: 'Đã sao chép!',
+  shareNative: 'Chia sẻ',
+  shareClose: 'Đóng',
+  shareScoreCard: 'Thẻ Điểm số',
 };

@@ -183,4 +183,18 @@ export const ru: Translations = {
   level_4_subtitle: 'Где отражения имеют свои намерения',
   level_5_name: 'Сердце Усадьбы',
   level_5_subtitle: 'Где оно всегда ждало',
+
+
+  // Share score
+  shareScore: 'Поделиться результатом',
+  shareTitle: 'Я сбежал из Pranksville!',
+  shareText: 'Я пережил Manor of Cursed Pranks с {sanity}% рассудка за {time}. Сможешь ли ты сделать лучше?',
+  shareTwitter: 'Поделиться на X',
+  shareReddit: 'Поделиться на Reddit',
+  shareFacebook: 'Поделиться на Facebook',
+  shareCopy: 'Скопировать ссылку',
+  shareCopied: 'Скопировано!',
+  shareNative: 'Поделиться',
+  shareClose: 'Закрыть',
+  shareScoreCard: 'Карточка результатов',
 };

@@ -183,4 +183,18 @@ export const pl: Translations = {
   level_4_subtitle: 'Gdzie odbicia mają swoje zamiary',
   level_5_name: 'Serce Dworu',
   level_5_subtitle: 'Gdzie zawsze czekało',
+
+
+  // Share score
+  shareScore: 'Udostępnij wynik',
+  shareTitle: 'Uciekłem z Pranksville!',
+  shareText: 'Przeżyłem Manor of Cursed Pranks z {sanity}% rozsądku w {time}. Czy możesz lepiej?',
+  shareTwitter: 'Udostępnij na X',
+  shareReddit: 'Udostępnij na Reddit',
+  shareFacebook: 'Udostępnij na Facebook',
+  shareCopy: 'Skopiuj link',
+  shareCopied: 'Skopiowano!',
+  shareNative: 'Udostępnij',
+  shareClose: 'Zamknij',
+  shareScoreCard: 'Karta wyniku',
 };

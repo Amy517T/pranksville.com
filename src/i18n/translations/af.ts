@@ -183,4 +183,17 @@ export const af: Translations = {
   level_4_subtitle: 'Waar spieëlbeelde hul eie doelstellinge het',
   level_5_name: 'Die Hart van die Landhuis',
   level_5_subtitle: 'Waar dit altyd gewag het',
+
+  // Share score
+  shareScore: 'Deel Telling',
+  shareTitle: 'Ek het uit Pranksville ontsnap!',
+  shareText: 'Ek het die Manor of Cursed Pranks oorleef met {sanity}% saniteit in {time}. Kan jy beter doen?',
+  shareTwitter: 'Deel op X',
+  shareReddit: 'Deel op Reddit',
+  shareFacebook: 'Deel op Facebook',
+  shareCopy: 'Kopieer Skakel',
+  shareCopied: 'Gekopieer!',
+  shareNative: 'Deel',
+  shareClose: 'Sluit',
+  shareScoreCard: 'Telling Kaart',
 };

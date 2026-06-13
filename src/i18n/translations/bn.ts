@@ -183,4 +183,18 @@ export const bn: Translations = {
   level_4_subtitle: 'যেখানে প্রতিফলনের তাদের নিজস্ব অভিপ্রায় রয়েছে',
   level_5_name: 'বাড়ির হৃদয়',
   level_5_subtitle: 'যেখানে এটি সর্বদা অপেক্ষা করছে',
+
+
+  // Share score
+  shareScore: 'স্কোর শেয়ার করুন',
+  shareTitle: 'আমি Pranksville থেকে পালিয়ে গিয়েছি!',
+  shareText: 'আমি {time} এ {sanity}% বিবেকের সাথে Manor of Cursed Pranks থেকে বেঁচে গিয়েছি। আপনি কি আরও ভাল করতে পারেন?',
+  shareTwitter: 'X এ শেয়ার করুন',
+  shareReddit: 'Reddit এ শেয়ার করুন',
+  shareFacebook: 'Facebook এ শেয়ার করুন',
+  shareCopy: 'লিংক কপি করুন',
+  shareCopied: 'কপি করা হয়েছে!',
+  shareNative: 'শেয়ার করুন',
+  shareClose: 'বন্ধ করুন',
+  shareScoreCard: 'স্কোর কার্ড',
 };

@@ -183,4 +183,18 @@ export const sr: Translations = {
   level_4_subtitle: 'Gde odrazi imaju svoje namere',
   level_5_name: 'Srce Dvorca',
   level_5_subtitle: 'Gde je oduvek čekalo',
+
+
+  // Share score
+  shareScore: 'Подели Резултат',
+  shareTitle: 'Побегао сам из Pranksville!',
+  shareText: 'Преживео сам Manor of Cursed Pranks са {sanity}% разума у {time}. Можеш ли боље?',
+  shareTwitter: 'Подели на X',
+  shareReddit: 'Подели на Redditu',
+  shareFacebook: 'Подели на Facebook',
+  shareCopy: 'Копирај везу',
+  shareCopied: 'Копирано!',
+  shareNative: 'Подели',
+  shareClose: 'Затвори',
+  shareScoreCard: 'Картица резултата',
 };

@@ -183,4 +183,18 @@ export const ko: Translations = {
   level_4_subtitle: '반사가 자신의 의도를 가지는 곳',
   level_5_name: '저택의 심장',
   level_5_subtitle: '그것이 항상 기다리고 있던 곳',
+
+
+  // Share score
+  shareScore: '점수 공유',
+  shareTitle: 'Pranksville에서 탈출했습니다!',
+  shareText: '{time}에 {sanity}% 정신으로 Manor of Cursed Pranks에서 생존했습니다. 더 잘할 수 있나요?',
+  shareTwitter: 'X에서 공유',
+  shareReddit: 'Reddit에서 공유',
+  shareFacebook: 'Facebook에서 공유',
+  shareCopy: '링크 복사',
+  shareCopied: '복사됨!',
+  shareNative: '공유',
+  shareClose: '닫기',
+  shareScoreCard: '점수 카드',
 };

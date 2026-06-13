@@ -183,4 +183,18 @@ export const sw: Translations = {
   level_4_subtitle: 'Mahali Ambapo Mwonekano Una Matakawa Yako',
   level_5_name: 'Moyo wa Nyumba',
   level_5_subtitle: 'Mahali Ambapo Kila Wakati Kuanzie',
+
+
+  // Share score
+  shareScore: 'Shiriki Alama',
+  shareTitle: 'Nilikimbia Pranksville!',
+  shareText: 'Nikaishi Manor of Cursed Pranks na {sanity}% akili katika {time}. Je, unaweza kufanya vyema?',
+  shareTwitter: 'Shiriki kwenye X',
+  shareReddit: 'Shiriki kwenye Reddit',
+  shareFacebook: 'Shiriki kwenye Facebook',
+  shareCopy: 'Nakili Kiungo',
+  shareCopied: 'Ilinakiliwa!',
+  shareNative: 'Shiriki',
+  shareClose: 'Funga',
+  shareScoreCard: 'Kadi ya Alama',
 };

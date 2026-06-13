@@ -183,4 +183,18 @@ export const el: Translations = {
   level_4_subtitle: 'Όπου τα αντανακλάσματα έχουν τις δικές τους προθέσεις',
   level_5_name: 'Η Καρδιά του Αρχοντικού',
   level_5_subtitle: 'Όπου ήταν πάντα περιμένοντας',
+
+
+  // Share score
+  shareScore: 'Κοινοποίηση Βαθμολογίας',
+  shareTitle: 'Δραπέτευσα από το Pranksville!',
+  shareText: 'Επέζησα του Manor of Cursed Pranks με {sanity}% λογική σε {time}. Μπορείς να τα καταφέρεις καλύτερα;',
+  shareTwitter: 'Κοινοποίηση στο X',
+  shareReddit: 'Κοινοποίηση στο Reddit',
+  shareFacebook: 'Κοινοποίηση στο Facebook',
+  shareCopy: 'Αντιγραφή Συνδέσμου',
+  shareCopied: 'Αντιγράφηκε!',
+  shareNative: 'Κοινοποίηση',
+  shareClose: 'Κλείσιμο',
+  shareScoreCard: 'Κάρτα Βαθμολογίας',
 };

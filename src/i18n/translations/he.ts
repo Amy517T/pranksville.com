@@ -183,4 +183,18 @@ export const he: Translations = {
   level_4_subtitle: 'איפה להשתקפויות נויות משלהם',
   level_5_name: 'לב הבית',
   level_5_subtitle: 'איפה זה תמיד היה מחכה',
+
+
+  // Share score
+  shareScore: 'שתף ניקוד',
+  shareTitle: 'ברחתי מ-Pranksville!',
+  shareText: 'שרדתי את Manor of Cursed Pranks עם {sanity}% שפיות ב-{time}. אתה יכול לעשות יותר טוב?',
+  shareTwitter: 'שתף ב-X',
+  shareReddit: 'שתף ב-Reddit',
+  shareFacebook: 'שתף ב-Facebook',
+  shareCopy: 'העתק קישור',
+  shareCopied: 'הועתק!',
+  shareNative: 'שתף',
+  shareClose: 'סגור',
+  shareScoreCard: 'כרטיס ניקוד',
 };

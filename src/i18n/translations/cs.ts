@@ -183,4 +183,18 @@ export const cs: Translations = {
   level_4_subtitle: 'Kde odrazy mají své záměry',
   level_5_name: 'Srdce Panství',
   level_5_subtitle: 'Kde vždy čekalo',
+
+
+  // Share score
+  shareScore: 'Sdílet skóre',
+  shareTitle: 'Unikl jsem z Pranksville!',
+  shareText: 'Přežil jsem Manor of Cursed Pranks se {sanity}% rozumem za {time}. Zvládneš to lépe?',
+  shareTwitter: 'Sdílet na X',
+  shareReddit: 'Sdílet na Redditu',
+  shareFacebook: 'Sdílet na Facebooku',
+  shareCopy: 'Kopírovat odkaz',
+  shareCopied: 'Zkopírováno!',
+  shareNative: 'Sdílet',
+  shareClose: 'Zavřít',
+  shareScoreCard: 'Kartička s skórem',
 };

@@ -183,4 +183,18 @@ export const jv: Translations = {
   level_4_subtitle: 'Kene Bayangan Duwe Niat Dhewe',
   level_5_name: 'Jantung Pendapa',
   level_5_subtitle: 'Kene Iku Tansah Ngenteni',
+
+
+  // Share score
+  shareScore: 'Bagé Skor',
+  shareTitle: 'Aku Mlayu saka Pranksville!',
+  shareText: 'Aku Selamat saka Manor of Cursed Pranks karo {sanity}% akal saka sehat ing {time}. Bisa kowe luwih apik?',
+  shareTwitter: 'Bagé ing X',
+  shareReddit: 'Bagé ing Reddit',
+  shareFacebook: 'Bagé ing Facebook',
+  shareCopy: 'Salin Pranala',
+  shareCopied: 'Tersalin!',
+  shareNative: 'Bagé',
+  shareClose: 'Tutup',
+  shareScoreCard: 'Kertu Skor',
 };

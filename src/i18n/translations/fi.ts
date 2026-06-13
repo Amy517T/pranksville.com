@@ -183,4 +183,18 @@ export const fi: Translations = {
   level_4_subtitle: 'Missä peileillä on omat aikomuksensa',
   level_5_name: 'Kartanon sydän',
   level_5_subtitle: 'Missä se aina odotti',
+
+
+  // Share score
+  shareScore: 'Jaa pistemäärä',
+  shareTitle: 'Pakenin Pranksville\'sta!',
+  shareText: 'Selvisin Manor of Cursed Pranks\'ista {sanity}% järjellä {time} aikana. Voitko tehdä paremmin?',
+  shareTwitter: 'Jaa X:ssä',
+  shareReddit: 'Jaa Redditissä',
+  shareFacebook: 'Jaa Facebookissa',
+  shareCopy: 'Kopioi linkki',
+  shareCopied: 'Kopioitu!',
+  shareNative: 'Jaa',
+  shareClose: 'Sulje',
+  shareScoreCard: 'Pistekortti',
 };

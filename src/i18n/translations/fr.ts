@@ -183,4 +183,18 @@ export const fr: Translations = {
   level_4_subtitle: 'Où les reflets ont leurs propres intentions',
   level_5_name: 'Le Cœur du Manoir',
   level_5_subtitle: 'Où il a toujours attendu',
+
+
+  // Share score
+  shareScore: 'Partager le Score',
+  shareTitle: 'J\'ai échappé à Pranksville!',
+  shareText: 'J\'ai survécu au Manor of Cursed Pranks avec {sanity}% de sanité mentale en {time}. Peux-tu faire mieux?',
+  shareTwitter: 'Partager sur X',
+  shareReddit: 'Partager sur Reddit',
+  shareFacebook: 'Partager sur Facebook',
+  shareCopy: 'Copier le lien',
+  shareCopied: 'Copié!',
+  shareNative: 'Partager',
+  shareClose: 'Fermer',
+  shareScoreCard: 'Carte des scores',
 };
