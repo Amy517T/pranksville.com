@@ -53,6 +53,11 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/iconic.png",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "screenshots": [
