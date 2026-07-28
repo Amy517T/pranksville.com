@@ -58,4 +58,4 @@ export interface GameState {
   journalsFound: JournalEntry[];
 }
 
-export type GamePhase = 'title' | 'intro' | 'playing' | 'scare' | 'levelComplete' | 'gameOver' | 'victory';
+export type GamePhase = 'title' | 'intro' | 'playing' | 'scare' | 'levelComplete' | 'ad' | 'gameOver' | 'victory';

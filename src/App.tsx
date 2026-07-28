@@ -106,7 +106,14 @@ function App() {
   }, [advanceLevel]);
 
   const handleContinueFromLevelComplete = useCallback(() => {
-    setPhase('playing');
+    if (window.afficherPubliciteInterstitielle) {
+      setPhase('ad');
+      window.afficherPubliciteInterstitielle().then(() => {
+        setPhase('playing');
+      });
+    } else {
+      setPhase('playing');
+    }
   }, [setPhase]);
 
   useEffect(() => {
