@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, SkipForward } from 'lucide-react';
 import { useT } from '../i18n';
 
 interface IntroSequenceProps {
@@ -50,13 +50,25 @@ export function IntroSequence({ playerName, onComplete }: IntroSequenceProps) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-black flex items-center justify-center transition-opacity duration-1000 ${fadeComplete ? 'opacity-0' : 'opacity-100'}`}
+      className="fixed inset-0 z-50 bg-black flex items-center justify-center transition-opacity duration-1000"
       onClick={() => {
         if (currentLine >= introLines.length) {
           onComplete();
         }
       }}
     >
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onComplete();
+        }}
+        className="absolute top-6 right-6 z-10 flex items-center gap-2 px-4 py-2 rounded border border-red-900/40 bg-black/60 text-red-500/70 hover:text-red-400 hover:border-red-700/60 transition-all duration-300"
+        aria-label="Skip intro"
+      >
+        <SkipForward className="w-4 h-4" />
+        <span className="text-xs tracking-widest uppercase">Skip</span>
+      </button>
+
       <div className="max-w-xl w-full px-8 space-y-4">
         {displayedLines.map((line, i) => (
           <p
@@ -76,7 +88,7 @@ export function IntroSequence({ playerName, onComplete }: IntroSequenceProps) {
         {currentLine < introLines.length && (
           <div className="pt-4 flex items-center gap-2 text-white/20 text-xs animate-pulse">
             <ChevronRight className="w-3 h-3" />
-            <span>Click to skip</span>
+            <span>Click to continue</span>
           </div>
         )}
       </div>
