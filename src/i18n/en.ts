@@ -184,6 +184,10 @@ export const en: Translations = {
   level_5_name: 'The Heart of the Mansion',
   level_5_subtitle: 'Where it has always been waiting',
 
+  // Hardcore mode
+  hardcoreOn: 'Hardcore Mode: ON',
+  hardcoreOff: 'Hardcore Mode: OFF',
+
   // Share score
   shareScore: 'Share Score',
   shareTitle: 'I escaped Pranksville!',

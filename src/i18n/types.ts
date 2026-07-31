@@ -264,6 +264,10 @@ export interface Translations {
   level_5_name: string;
   level_5_subtitle: string;
 
+  // Hardcore mode
+  hardcoreOn: string;
+  hardcoreOff: string;
+
   // Share score
   shareScore: string;
   shareTitle: string;

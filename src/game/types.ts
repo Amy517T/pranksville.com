@@ -56,6 +56,7 @@ export interface GameState {
   startTime: number;
   inventory: string[];
   journalsFound: JournalEntry[];
+  hardcore: boolean;
 }
 
 export type GamePhase = 'title' | 'intro' | 'playing' | 'scare' | 'levelComplete' | 'ad' | 'gameOver' | 'victory';

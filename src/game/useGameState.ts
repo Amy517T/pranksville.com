@@ -14,6 +14,7 @@ const initialState: GameState = {
   startTime: Date.now(),
   inventory: [],
   journalsFound: [],
+  hardcore: false,
 };
 
 interface PursuitState {
@@ -52,7 +53,8 @@ export function useGameState() {
         if (prev.sanity <= 0) return prev;
         const baseDrain = 0.3 + (prev.currentLevel * 0.15);
         const sanityFactor = Math.max(0.5, prev.sanity / 100);
-        const drain = baseDrain * sanityFactor;
+        const hardcoreMult = prev.hardcore ? 1.6 : 1;
+        const drain = baseDrain * sanityFactor * hardcoreMult;
         const newSanity = Math.max(0, Math.round((prev.sanity - drain) * 10) / 10);
         return { ...prev, sanity: newSanity };
       });
@@ -103,8 +105,9 @@ export function useGameState() {
     return () => { if (pursuitTickRef.current) clearInterval(pursuitTickRef.current); };
   }, [phase, pursuit.active, gameState.roomsVisited.length]);
 
-  const startGame = useCallback((playerName: string) => {
-    setGameState({ ...initialState, playerName, startTime: Date.now() });
+  const startGame = useCallback((playerName: string, hardcore: boolean) => {
+    const startSanity = hardcore ? 75 : 100;
+    setGameState({ ...initialState, playerName, startTime: Date.now(), hardcore, sanity: startSanity });
     setPhase('intro');
     setPursuit({ active: false, roomId: null, roomsBehind: 3, message: '' });
   }, []);
@@ -118,11 +121,12 @@ export function useGameState() {
       const newVisited = prev.roomsVisited.includes(roomId)
         ? prev.roomsVisited
         : [...prev.roomsVisited, roomId];
+      const moveDrain = 1 + prev.currentLevel * 0.5 * (prev.hardcore ? 1.5 : 1);
       return {
         ...prev,
         currentRoom: roomId,
         roomsVisited: newVisited,
-        sanity: Math.max(0, Math.round((prev.sanity - (1 + prev.currentLevel * 0.5)) * 10) / 10),
+        sanity: Math.max(0, Math.round((prev.sanity - moveDrain) * 10) / 10),
       };
     });
 
@@ -148,10 +152,10 @@ export function useGameState() {
     const scheduleAmbush = () => {
       const delay = 15000 + Math.random() * 30000;
       ambushTimeoutRef.current = setTimeout(() => {
-        if (Math.random() < 0.4) {
+        if (Math.random() < (gameState.hardcore ? 0.6 : 0.4)) {
           const idx = Math.floor(Math.random() * 10) + 1;
           const damages = [12, 10, 8, 15, 10, 8, 18, 14, 12, 16];
-          const damage = damages[idx - 1];
+          const damage = damages[idx - 1] * (gameState.hardcore ? 1.5 : 1);
           setAmbushMessageKey(`ambush_${idx}`);
           setShowAmbush(true);
           setGameState(prev => ({
@@ -171,7 +175,7 @@ export function useGameState() {
     if (!prank) return;
     setGameState(prev => {
       if (prev.pranksTriggered.includes(prank.id)) return prev;
-      const newSanity = Math.max(0, prev.sanity - prank.sanityDamage);
+      const newSanity = Math.max(0, prev.sanity - prank.sanityDamage * (prev.hardcore ? 1.4 : 1));
       return {
         ...prev,
         sanity: newSanity,
@@ -226,7 +230,8 @@ export function useGameState() {
 
   const advanceLevel = useCallback(() => {
     const nextLevel = gameState.currentLevel + 1;
-    if (nextLevel > levels.length) {
+    const maxLevel = gameState.hardcore ? levels.length : levels.length - 1;
+    if (nextLevel > maxLevel) {
       setGameState(prev => ({ ...prev, completed: true }));
       setPhase('victory');
     } else {
@@ -242,7 +247,7 @@ export function useGameState() {
       setPursuit({ active: false, roomId: null, roomsBehind: 3, message: '' });
       setPhase('levelComplete');
     }
-  }, [gameState.currentLevel, setPhase]);
+  }, [gameState.currentLevel, gameState.hardcore, setPhase]);
 
   const canAdvanceLevel = useCallback(() => {
     return gameState.keysFound >= currentLevel.requiredKeys;

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useGameState } from './game/useGameState';
 import { levels } from './game/levels';
-import { playAmbientDrone, playHeartbeat } from './lib/sounds';
+import { playAmbientDrone, playHeartbeat, playLowSanityDrone, playDistantScream, playStaticBurst, playViolinSting, playChildGiggle } from './lib/sounds';
 import { useT } from './i18n';
 import { TitleScreen } from './components/TitleScreen';
 import { IntroSequence } from './components/IntroSequence';
@@ -46,6 +46,7 @@ function App() {
   const [showInventory, setShowInventory] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [drone, setDrone] = useState<{ stop: () => void } | null>(null);
+  const [lowSanityDrone, setLowSanityDrone] = useState<{ stop: () => void } | null>(null);
   const [heartbeatInterval, setHeartbeatInterval] = useState<ReturnType<typeof setInterval> | null>(null);
 
   // Translate dynamic message keys
@@ -62,6 +63,26 @@ function App() {
     }
     return () => { if (drone) drone.stop(); };
   }, [phase]);
+
+  useEffect(() => {
+    if (phase === 'playing' && gameState.sanity <= 30 && !lowSanityDrone) {
+      setLowSanityDrone(playLowSanityDrone());
+    } else if ((phase !== 'playing' || gameState.sanity > 30) && lowSanityDrone) {
+      lowSanityDrone.stop();
+      setLowSanityDrone(null);
+    }
+    return () => {};
+  }, [phase, gameState.sanity, lowSanityDrone]);
+
+  useEffect(() => {
+    if (phase !== 'playing' || gameState.sanity > 20) return;
+    const effects = [playDistantScream, playStaticBurst, playViolinSting, playChildGiggle];
+    const interval = setInterval(() => {
+      const effect = effects[Math.floor(Math.random() * effects.length)];
+      effect();
+    }, 8000 + Math.random() * 7000);
+    return () => clearInterval(interval);
+  }, [phase, gameState.sanity]);
 
   useEffect(() => {
     if (phase !== 'playing') {
@@ -89,8 +110,8 @@ function App() {
     return () => { document.body.style.cursor = 'default'; };
   }, [phase]);
 
-  const handleStart = useCallback((playerName: string) => {
-    startGame(playerName);
+  const handleStart = useCallback((playerName: string, hardcore: boolean) => {
+    startGame(playerName, hardcore);
   }, [startGame]);
 
   const handleScareComplete = useCallback(() => {

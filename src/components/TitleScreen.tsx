@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
-import { Skull, DoorOpen, Trophy } from 'lucide-react';
+import { Skull, DoorOpen, Trophy, Flame } from 'lucide-react';
 import { useT } from '../i18n';
 import { LanguageSelector } from './LanguageSelector';
 
 interface TitleScreenProps {
-  onStart: (playerName: string) => void;
+  onStart: (playerName: string, hardcore: boolean) => void;
   onShowLeaderboard: () => void;
 }
 
 export function TitleScreen({ onStart, onShowLeaderboard }: TitleScreenProps) {
   const t = useT();
   const [playerName, setPlayerName] = useState('');
+  const [hardcore, setHardcore] = useState(false);
   const [flicker, setFlicker] = useState(false);
   const [showContent, setShowContent] = useState(false);
 
@@ -24,7 +25,7 @@ export function TitleScreen({ onStart, onShowLeaderboard }: TitleScreenProps) {
   }, []);
 
   const handleStart = () => {
-    if (playerName.trim()) onStart(playerName.trim());
+    if (playerName.trim()) onStart(playerName.trim(), hardcore);
   };
 
   return (
@@ -66,6 +67,15 @@ export function TitleScreen({ onStart, onShowLeaderboard }: TitleScreenProps) {
           >
             <DoorOpen className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             <span className="tracking-widest uppercase text-sm">{t.enterMansion}</span>
+          </button>
+
+          <button
+            onClick={() => setHardcore(!hardcore)}
+            className={`w-full px-4 py-3 rounded border transition-all duration-300 flex items-center justify-center gap-2 ${hardcore ? 'bg-red-950/60 border-red-600/70 text-red-400' : 'bg-black/80 border-red-900/30 text-red-900/50 hover:text-red-700/60 hover:border-red-800/50'}`}
+            style={hardcore ? { textShadow: '0 0 12px rgba(255,40,40,0.5)' } : undefined}
+          >
+            <Flame className={`w-5 h-5 transition-transform ${hardcore ? 'scale-110' : ''}`} />
+            <span className="tracking-widest uppercase text-xs">{hardcore ? t.hardcoreOn : t.hardcoreOff}</span>
           </button>
 
           <LanguageSelector variant="full" />
