@@ -40,6 +40,7 @@ export const levels: Level[] = [
         atmosphere: 'eerie',
         exits: ['hallway', 'dining_room', 'library', 'smoking_lounge'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('foyer_entry', 'The front door SLAMS behind you. You are not leaving the way you came. A whisper from the chandelier: "Welcome home."', 18),
         items: ['old photograph'],
         ambientDescription: 'A distant creak echoes from upstairs.',
@@ -51,6 +52,7 @@ export const levels: Level[] = [
         atmosphere: 'eerie',
         exits: ['foyer', 'upstairs_landing', 'servant_quarters', 'coat_room'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'portrait_eyes',
           type: 'illusion',
@@ -69,6 +71,7 @@ export const levels: Level[] = [
         atmosphere: 'eerie',
         exits: ['foyer', 'kitchen', 'butler_pantry', 'wine_closet'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'dining_ghost',
           type: 'jumpscare',
@@ -87,6 +90,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['foyer', 'secret_passage', 'study', 'map_room'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'library_whisper',
           type: 'whisper',
@@ -106,6 +110,7 @@ export const levels: Level[] = [
         atmosphere: 'eerie',
         exits: ['dining_room', 'pantry', 'scullery'],
         hasKey: false,
+        hasBattery: true,
         prank: {
           id: 'kitchen_slam',
           type: 'door_slam',
@@ -124,6 +129,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['kitchen'],
         hasKey: false,
+        hasBattery: true,
         prank: entryScare('pantry_jars', 'The jars begin to tremble on their shelves. One shatters — inside is a tiny hand, still moving. The other jars crack, one by one, in sequence, moving toward you.', 20),
         items: ['strange herb'],
         ambientDescription: 'Something inside a jar is moving.',
@@ -135,6 +141,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['hallway', 'laundry_room'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'servant_mirror',
           type: 'mirror',
@@ -153,6 +160,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['hallway', 'nursery', 'master_bedroom'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'landing_shadow',
           type: 'shadow',
@@ -171,6 +179,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['library', 'cellar_preview'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'passage_hands',
           type: 'jumpscare',
@@ -190,6 +199,7 @@ export const levels: Level[] = [
         atmosphere: 'eerie',
         exits: ['foyer', 'billiard_room'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'smoke_figure',
           type: 'illusion',
@@ -208,6 +218,7 @@ export const levels: Level[] = [
         atmosphere: 'eerie',
         exits: ['hallway'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('coat_grab', 'A hand reaches from inside a coat and grabs your wrist. The coat falls to the floor — empty. The handprint on your wrist burns cold, and you can still feel fingers where there are none.', 20),
         items: ['brass button'],
         ambientDescription: 'The coats sway without any breeze. One just moved.',
@@ -219,6 +230,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['library'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'study_globe',
           type: 'possession',
@@ -237,6 +249,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['library'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'map_change',
           type: 'illusion',
@@ -255,6 +268,7 @@ export const levels: Level[] = [
         atmosphere: 'eerie',
         exits: ['dining_room'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('butler_uniform', 'The uniform twitches. The sleeves inflate as if arms are inside — arms that bend in too many places. It steps off the hook and stands in the corner, facing the wall. It begins humming a funeral march.', 22),
         items: ['silver polish'],
         ambientDescription: 'The uniform sways. The sleeves just moved.',
@@ -266,6 +280,7 @@ export const levels: Level[] = [
         atmosphere: 'eerie',
         exits: ['dining_room'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('wine_flood', 'Wine — or what you pray is wine — begins flowing from the empty bottles. It pools on the floor and rises. In the rising liquid, you see faces — dozens of them — mouths open, drowning, reaching up toward you.', 22),
         items: ['empty wine bottle'],
         ambientDescription: 'A cork pops. Then another. The bottles are refilling.',
@@ -277,6 +292,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['kitchen'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'scullery_drain',
           type: 'whisper',
@@ -295,6 +311,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['servant_quarters'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'laundry_figure',
           type: 'shadow',
@@ -313,6 +330,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['upstairs_landing', 'playroom'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'nursery_mobile',
           type: 'possession',
@@ -332,6 +350,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['upstairs_landing', 'dressing_room'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'bedroom_mirror',
           type: 'mirror',
@@ -350,6 +369,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['secret_passage'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('cellar_breath', 'As you descend, you feel breath on the back of your neck — warm and wet. Not from above. From BELOW. Something in the cellar is breathing UPWARD, and it just exhaled on you.', 24),
         items: [],
         ambientDescription: 'The red glow below pulses like a heartbeat. YOUR heartbeat.',
@@ -361,6 +381,7 @@ export const levels: Level[] = [
         atmosphere: 'eerie',
         exits: ['smoking_lounge'],
         hasKey: false,
+        hasBattery: true,
         prank: {
           id: 'billiard_shot',
           type: 'door_slam',
@@ -379,6 +400,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['nursery', 'toy_closet'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'playroom_blocks',
           type: 'creepy',
@@ -397,6 +419,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['playroom'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'jack_box',
           type: 'jumpscare',
@@ -415,6 +438,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['master_bedroom'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'mannequin_move',
           type: 'shadow',
@@ -458,6 +482,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['wine_vault', 'boiler_room', 'tunnel'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('cellar_entry', 'The stairs collapse behind you. Not physically — you can still see them. But you know, with absolute certainty, that you cannot climb back up. Something fundamental has changed. You are deeper now, and the surface is further than it was.', 25),
         items: [],
         ambientDescription: 'The stairs creak with each step, as if something follows.',
@@ -469,6 +494,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['cellar_stairs', 'alcove', 'tasting_room'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'wine_blood',
           type: 'jumpscare',
@@ -487,6 +513,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['cellar_stairs', 'maintenance_tunnel', 'coal_chute'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'boiler_heart',
           type: 'possession',
@@ -505,6 +532,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['cellar_stairs', 'crypt_entrance', 'bone_chamber'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'tunnel_bones',
           type: 'jumpscare',
@@ -523,6 +551,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['wine_vault'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'altar_book',
           type: 'possession',
@@ -542,6 +571,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['boiler_room', 'generator_room'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'tunnel_spark',
           type: 'shadow',
@@ -560,6 +590,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['tunnel', 'crypt_main', 'urn_hall'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('crypt_cold', 'The temperature drops below freezing. Your breath crystallizes. Frost forms on your skin, and in the frost patterns on your arms, you see words: "WE HAVE BEEN WAITING." The frost burns.', 26),
         items: ['iron key'],
         ambientDescription: 'The air tastes like copper and old earth. Something exhaled on you.',
@@ -571,6 +602,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['wine_vault'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'tasting_toast',
           type: 'whisper',
@@ -589,6 +621,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['boiler_room'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'coal_hands',
           type: 'jumpscare',
@@ -607,6 +640,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['tunnel', 'ossuary_gate'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'bone_wall',
           type: 'creepy',
@@ -625,6 +659,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['maintenance_tunnel', 'fuse_box'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'generator_start',
           type: 'door_slam',
@@ -643,6 +678,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['crypt_entrance', 'catacombs'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'crypt_open',
           type: 'possession',
@@ -661,6 +697,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['crypt_entrance'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'urn_names',
           type: 'illusion',
@@ -679,6 +716,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['bone_chamber', 'deep_well'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('ossuary_grab', 'The rib bones of the gate GRAB you as you pass through. They squeeze — not to trap, but to EMBRACE. You hear a heartbeat from inside the walls. The ribs are part of something enormous, and it just hugged you.', 28),
         items: [],
         ambientDescription: 'The ribs of the gate expand and contract, breathing.',
@@ -690,6 +728,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['generator_room'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'fuse_pull',
           type: 'door_slam',
@@ -708,6 +747,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['crypt_main', 'well_room'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'catacomb_eyes',
           type: 'jumpscare',
@@ -727,6 +767,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['ossuary_gate'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'well_reflection',
           type: 'mirror',
@@ -745,6 +786,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['catacombs', 'attic_preview'],
         hasKey: false,
+        hasBattery: true,
         prank: entryScare('well_bucket', 'The bucket rises on its own. Inside is a finger — still wearing your ring. You look at your hand. The ring is there. The finger in the bucket is wearing an identical ring. Whose finger is it?', 30),
         items: ['folded note'],
         ambientDescription: 'The bucket rises and falls on its own. It always has something new inside.',
@@ -756,6 +798,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['well_room'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('attic_music', 'The music box above changes tune. You recognize it — it\'s the lullaby from your childhood. But it\'s playing backward. And when played backward, the melody is a funeral dirge. Your funeral dirge.', 26),
         items: [],
         ambientDescription: 'The music box above winds and unwinds. It just changed key.',
@@ -792,6 +835,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['storage_room', 'doll_room', 'music_room', 'trunk_room'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('attic_whisper', 'A hundred voices whisper your name from inside the walls. Not in unison — in rounds, like a canon. The whispers overlap and layer until your name becomes an alien sound, meaningless, just noise. You\'ve lost the meaning of your own name.', 28),
         items: [],
         ambientDescription: 'The scratching inside the walls follows you. It keeps tempo with your heartbeat.',
@@ -803,6 +847,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['attic_landing', 'narrow_corridor', 'photo_studio'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'storage_box',
           type: 'jumpscare',
@@ -821,6 +866,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['attic_landing', 'porcelain_hall'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'doll_turn',
           type: 'possession',
@@ -839,6 +885,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['attic_landing', 'secret_attic', 'conductor_study'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'piano_play',
           type: 'whisper',
@@ -858,6 +905,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['storage_room'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'corridor_figure',
           type: 'shadow',
@@ -876,6 +924,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['music_room', 'impossible_staircase'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'secret_photos',
           type: 'mirror',
@@ -895,6 +944,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['attic_landing'],
         hasKey: false,
+        hasBattery: true,
         prank: {
           id: 'trunk_breathe',
           type: 'jumpscare',
@@ -913,6 +963,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['storage_room'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'photo_flash',
           type: 'illusion',
@@ -931,6 +982,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['doll_room', 'mask_chamber'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'mask_speak',
           type: 'possession',
@@ -949,6 +1001,7 @@ export const levels: Level[] = [
         atmosphere: 'dread',
         exits: ['music_room'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'conductor_baton',
           type: 'possession',
@@ -967,6 +1020,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['secret_attic', 'mirror_preview'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'staircase_loop',
           type: 'illusion',
@@ -985,6 +1039,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['porcelain_hall'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'mask_your_face',
           type: 'mirror',
@@ -1003,6 +1058,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['impossible_staircase'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('mirror_door', 'You step through and catch a glimpse of yourself in every reflective surface — but every version of you is in a different room, at a different time. One of them is dead. One of them IS the mansion. They all wave.', 30),
         items: [],
         ambientDescription: 'Your reflections in the walls don\'t match your pose. They\'re all doing different things.',
@@ -1039,6 +1095,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['reflection_room', 'shattered_chamber', 'infinity_room', 'corridor_of_echoes'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('mirror_missing', 'You look for your missing reflection. You find it — in a different mirror, in a different POSE. It\'s been doing things without you. It turns to face you and mouths: "I don\'t need you anymore."', 32),
         items: [],
         ambientDescription: 'Your reflections move out of sync. One just did something you didn\'t do.',
@@ -1050,6 +1107,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['mirror_hall', 'reverse_lounge'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'reflection_stranger',
           type: 'possession',
@@ -1068,6 +1126,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['mirror_hall', 'beyond_mirror', 'glass_forest'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'shattered_scenes',
           type: 'creepy',
@@ -1087,6 +1146,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['mirror_hall', 'fracture_point'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'infinity_approach',
           type: 'jumpscare',
@@ -1105,6 +1165,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['shattered_chamber', 'mirror_garden', 'reverse_kitchen'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'mirror_world',
           type: 'possession',
@@ -1123,6 +1184,7 @@ export const levels: Level[] = [
         atmosphere: 'terror',
         exits: ['mirror_hall', 'echo_chamber'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'echo_lies',
           type: 'whisper',
@@ -1141,6 +1203,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['reflection_room'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'reverse_sit',
           type: 'illusion',
@@ -1159,6 +1222,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['shattered_chamber', 'crystal_cave'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'glass_self',
           type: 'mirror',
@@ -1177,6 +1241,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['infinity_room', 'between_worlds'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'fracture_see',
           type: 'illusion',
@@ -1195,6 +1260,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['beyond_mirror', 'pool_of_truth'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'garden_bloom',
           type: 'possession',
@@ -1213,6 +1279,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['beyond_mirror'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'reverse_cook',
           type: 'possession',
@@ -1231,6 +1298,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['corridor_of_echoes'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'echo_think',
           type: 'possession',
@@ -1249,6 +1317,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['glass_forest', 'void_preview'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'crystal_future',
           type: 'illusion',
@@ -1267,6 +1336,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['mirror_garden'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'pool_self',
           type: 'mirror',
@@ -1286,6 +1356,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['fracture_point'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('between_crush', 'The membrane squeezes. The mirror world above and the mansion below press together, and you\'re between them. For a moment, you exist in both places at once — reflected and real, observer and observed. You don\'t know which one you are anymore.', 35),
         items: [],
         ambientDescription: 'You are the barrier. The mansion pushes; the mirror pulls. You\'re getting thin.',
@@ -1297,6 +1368,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['crystal_cave'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('void_call', 'The void calls your name. Not with sound — with absence. The absence of your name in the universe is what calls you. It removes you from everywhere else to summon you here. You feel yourself disappearing from the memories of everyone who ever knew you.', 38),
         items: [],
         ambientDescription: 'The darkness ahead is not dark. It is nothing. And it knows you.',
@@ -1333,6 +1405,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['the_threshold', 'memory_hall', 'final_corridor', 'echoing_dark'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('void_aware', 'The void is AWARE of you. Not watching — BEING you. It occupies the same space as your consciousness. You think your thoughts, but they\'re also its thoughts. You can\'t tell where you end and it begins. It likes being you. It doesn\'t want to leave.', 40),
         items: [],
         ambientDescription: 'The void breathes. Inhale. Exhale. You breathe with it. You ARE it.',
@@ -1344,6 +1417,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['void_entrance', 'convergence'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'threshold_echo',
           type: 'possession',
@@ -1362,6 +1436,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['void_entrance', 'nameless_room'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'memory_replace',
           type: 'possession',
@@ -1380,6 +1455,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['void_entrance', 'heart_room', 'the_pact'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'final_heartbeat',
           type: 'possession',
@@ -1398,6 +1474,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['void_entrance', 'silent_room'],
         hasKey: false,
+        hasBattery: true,
         prank: {
           id: 'echoing_all',
           type: 'whisper',
@@ -1416,6 +1493,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['the_threshold'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'convergence_all',
           type: 'possession',
@@ -1434,6 +1512,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['memory_hall', 'the_bloom'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'nameless_read',
           type: 'possession',
@@ -1452,6 +1531,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['final_corridor'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'pact_sign',
           type: 'possession',
@@ -1470,6 +1550,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['echoing_dark', 'the_core'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'silent_thought',
           type: 'possession',
@@ -1488,6 +1569,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['nameless_room'],
         hasKey: false,
+        hasBattery: true,
         prank: {
           id: 'bloom_stare',
           type: 'possession',
@@ -1506,6 +1588,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['silent_room'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'core_self',
           type: 'mirror',
@@ -1524,6 +1607,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['final_corridor'],
         hasKey: true,
+        hasBattery: false,
         prank: entryScare('heart_beat', 'The heart BEATS and your chest echoes it. Your ribs align with its cage. Your blood pulses in sync. You are not visiting the heart — you are REUNITING with it. The separation was the illusion. The heart beats. You beat. The mansion beats. One pulse. One body. Yours.', 45),
         items: ['heart of the mansion'],
         ambientDescription: 'It beats. It waits. It knows. You are it.',
@@ -1561,6 +1645,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['root_chamber', 'mirror_abyss', 'echoing_void', 'first_room'],
         hasKey: false,
+        hasBattery: false,
         prank: entryScare('abyss_landing', 'You land. The floor is made of faces — thousands of them, mouths open in silent screams. They are all Eleanor. Every version of her, from every timeline the mansion consumed. They breathe in unison. One of them blinks and looks up at you. "You came back. I knew you would."', 42),
         items: [],
         ambientDescription: 'The faces beneath your feet breathe in unison. One is watching you.',
@@ -1572,6 +1657,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['abyss_descent', 'the_seed', 'memory_vault'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'root_grab',
           type: 'possession',
@@ -1590,6 +1676,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['abyss_descent', 'shattered_self'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'mirror_all',
           type: 'mirror',
@@ -1608,6 +1695,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['abyss_descent', 'silent_core'],
         hasKey: false,
+        hasBattery: true,
         prank: {
           id: 'void_compress',
           type: 'whisper',
@@ -1626,6 +1714,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['abyss_descent', 'the_hatchling'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'first_wait',
           type: 'possession',
@@ -1644,6 +1733,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['root_chamber'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'seed_touch',
           type: 'possession',
@@ -1662,6 +1752,7 @@ export const levels: Level[] = [
         atmosphere: 'nightmare',
         exits: ['root_chamber'],
         hasKey: false,
+        hasBattery: false,
         prank: {
           id: 'vault_empty',
           type: 'illusion',
@@ -1680,6 +1771,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['mirror_abyss'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'shattered_join',
           type: 'possession',
@@ -1698,6 +1790,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['echoing_void', 'the_hatchling'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'silent_breath',
           type: 'possession',
@@ -1716,6 +1809,7 @@ export const levels: Level[] = [
         atmosphere: 'void',
         exits: ['first_room', 'silent_core'],
         hasKey: true,
+        hasBattery: false,
         prank: {
           id: 'hatchling_speak',
           type: 'possession',

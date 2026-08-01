@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { DoorOpen, Key, Package, Eye, ArrowRight, BookOpen } from 'lucide-react';
+import { DoorOpen, Key, Package, Eye, ArrowRight, BookOpen, Battery } from 'lucide-react';
 import type { Room, Level, GameState, JournalEntry } from '../game/types';
 import { useT } from '../i18n';
 
@@ -10,6 +10,7 @@ interface RoomViewProps {
   onMoveToRoom: (roomId: string) => void;
   onTriggerPrank: (prank: Room['prank']) => void;
   onCollectKey: () => void;
+  onCollectBattery: () => void;
   onCollectItem: (item: string) => void;
   onCollectJournal: (journal: JournalEntry) => void;
   onAdvanceLevel: () => void;
@@ -27,6 +28,7 @@ export function RoomView({
   onMoveToRoom,
   onTriggerPrank,
   onCollectKey,
+  onCollectBattery,
   onCollectItem,
   onCollectJournal,
   onAdvanceLevel,
@@ -39,9 +41,11 @@ export function RoomView({
   const [revealed, setRevealed] = useState(false);
   const [examinedPrank, setExaminedPrank] = useState(false);
   const [keyCollected, setKeyCollected] = useState(false);
+  const [batteryCollected, setBatteryCollected] = useState(false);
   const [itemsCollected, setItemsCollected] = useState<string[]>([]);
   const [ambientFlicker, setAmbientFlicker] = useState(false);
   const [hoveredExit, setHoveredExit] = useState<string | null>(null);
+  const [shake, setShake] = useState(false);
   const t = useT();
   const [journalFound, setJournalFound] = useState(false);
   const [showJournal, setShowJournal] = useState(false);
@@ -50,6 +54,7 @@ export function RoomView({
     setRevealed(false);
     setExaminedPrank(false);
     setKeyCollected(false);
+    setBatteryCollected(false);
     setItemsCollected([]);
     setJournalFound(false);
     setShowJournal(false);
@@ -67,6 +72,16 @@ export function RoomView({
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (gameState.sanity <= 25) {
+      const shakeInterval = setInterval(() => {
+        setShake(true);
+        setTimeout(() => setShake(false), 200 + Math.random() * 300);
+      }, 2000 + Math.random() * 3000);
+      return () => clearInterval(shakeInterval);
+    }
+  }, [gameState.sanity]);
+
   const handleExamine = () => {
     if (examinedPrank || !room.prank) return;
     setExaminedPrank(true);
@@ -77,6 +92,12 @@ export function RoomView({
     if (keyCollected || !room.hasKey) return;
     setKeyCollected(true);
     onCollectKey();
+  };
+
+  const handleCollectBattery = () => {
+    if (batteryCollected || !room.hasBattery) return;
+    setBatteryCollected(true);
+    onCollectBattery();
   };
 
   const handleCollectItem = (item: string) => {
@@ -95,10 +116,16 @@ export function RoomView({
 
   // Sanity-based visual distortions
   const sanityPercent = gameState.sanity;
+  const batteryPercent = gameState.battery;
   const vignetteStrength = Math.max(0, (100 - sanityPercent) / 100);
   const staticIntensity = Math.max(0, (100 - sanityPercent) / 150);
   const redShift = Math.max(0, (100 - sanityPercent) / 200);
   const blurAmount = Math.max(0, (80 - sanityPercent) / 80) * 2;
+
+  // Flashlight vision radius - shrinks as sanity AND battery drop
+  const lightFactor = Math.min(sanityPercent, batteryPercent) / 100;
+  const visionRadius = 20 + lightFactor * 50;
+  const darknessOpacity = 1 - lightFactor * 0.7;
 
   const exitRoomNames = room.exits.map(exitId => ({
     id: exitId,
@@ -113,8 +140,17 @@ export function RoomView({
         opacity: revealed ? 1 : 0,
         background: atmosphereGradients[room.atmosphere],
         filter: blurAmount > 0 ? `blur(${blurAmount}px)` : undefined,
+        transform: shake ? `translate(${(Math.random() - 0.5) * 8}px, ${(Math.random() - 0.5) * 8}px)` : undefined,
+        transition: shake ? 'none' : 'opacity 0.7s ease',
       }}
     >
+      {/* Flashlight vision radius overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{
+          background: `radial-gradient(ellipse at center, transparent ${visionRadius}%, rgba(0,0,0,${darknessOpacity}) ${visionRadius + 25}%)`,
+        }}
+      />
       {/* Vignette overlay - gets worse as sanity drops */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -242,6 +278,16 @@ export function RoomView({
               >
                 <Key className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                 <span className="text-sm">{t.pickupKey}</span>
+              </button>
+            )}
+
+            {room.hasBattery && !batteryCollected && (
+              <button
+                onClick={handleCollectBattery}
+                className="flex items-center gap-2 px-4 py-2 rounded border border-green-600/40 text-green-500 bg-green-600/10 transition-all duration-300 hover:scale-105 hover:border-green-500/60 group animate-pulse"
+              >
+                <Battery className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                <span className="text-sm">{t.pickupBattery}</span>
               </button>
             )}
 

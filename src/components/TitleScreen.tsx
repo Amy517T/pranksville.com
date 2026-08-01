@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Skull, DoorOpen, Trophy, Flame } from 'lucide-react';
+import { Skull, DoorOpen, Trophy, Flame, Star } from 'lucide-react';
 import { useT } from '../i18n';
 import { LanguageSelector } from './LanguageSelector';
 
@@ -88,6 +88,29 @@ export function TitleScreen({ onStart, onShowLeaderboard }: TitleScreenProps) {
           <Trophy className="w-4 h-4" />
           {t.leaderboard}
         </button>
+
+        {(() => {
+          const bestNormal = parseInt(localStorage.getItem('pranksville_best_normal') || '0', 10);
+          const bestHardcore = parseInt(localStorage.getItem('pranksville_best_hardcore') || '0', 10);
+          const formatTime = (s: number) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
+          if (bestNormal === 0 && bestHardcore === 0) return null;
+          return (
+            <div className="flex items-center gap-4 text-xs text-amber-600/40">
+              {bestNormal > 0 && (
+                <span className="flex items-center gap-1">
+                  <Star className="w-3 h-3" />
+                  {t.bestTime}: {formatTime(bestNormal)}
+                </span>
+              )}
+              {bestHardcore > 0 && (
+                <span className="flex items-center gap-1 text-red-500/40">
+                  <Flame className="w-3 h-3" />
+                  {t.bestTimeHardcore}: {formatTime(bestHardcore)}
+                </span>
+              )}
+            </div>
+          );
+        })()}
       </div>
 
       <div className="absolute bottom-4 text-red-900/20 text-xs tracking-widest">

@@ -5,6 +5,7 @@ export interface Room {
   atmosphere: 'eerie' | 'dread' | 'terror' | 'nightmare' | 'void';
   exits: string[];
   hasKey: boolean;
+  hasBattery: boolean;
   prank: Prank | null;
   items: string[];
   ambientDescription: string;
@@ -48,6 +49,7 @@ export interface GameState {
   currentLevel: number;
   currentRoom: string;
   sanity: number;
+  battery: number;
   keysFound: number;
   pranksTriggered: string[];
   roomsVisited: string[];

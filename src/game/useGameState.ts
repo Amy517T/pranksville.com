@@ -6,6 +6,7 @@ const initialState: GameState = {
   currentLevel: 1,
   currentRoom: 'foyer',
   sanity: 100,
+  battery: 100,
   keysFound: 0,
   pranksTriggered: [],
   roomsVisited: ['foyer'],
@@ -56,7 +57,9 @@ export function useGameState() {
         const hardcoreMult = prev.hardcore ? 1.6 : 1;
         const drain = baseDrain * sanityFactor * hardcoreMult;
         const newSanity = Math.max(0, Math.round((prev.sanity - drain) * 10) / 10);
-        return { ...prev, sanity: newSanity };
+        const batteryDrain = prev.hardcore ? 2.5 : 1.5;
+        const newBattery = Math.max(0, Math.round((prev.battery - batteryDrain) * 10) / 10);
+        return { ...prev, sanity: newSanity, battery: newBattery };
       });
     }, 2000);
     return () => { if (passiveDrainRef.current) clearInterval(passiveDrainRef.current); };
@@ -107,8 +110,9 @@ export function useGameState() {
 
   const startGame = useCallback((playerName: string, hardcore: boolean) => {
     const startSanity = hardcore ? 75 : 100;
-    setGameState({ ...initialState, playerName, startTime: Date.now(), hardcore, sanity: startSanity });
-    setPhase('intro');
+    const startBattery = hardcore ? 75 : 100;
+    setGameState({ ...initialState, playerName, startTime: Date.now(), hardcore, sanity: startSanity, battery: startBattery });
+    setPhase('ad');
     setPursuit({ active: false, roomId: null, roomsBehind: 3, message: '' });
   }, []);
 
@@ -207,6 +211,13 @@ export function useGameState() {
     }));
   }, []);
 
+  const collectBattery = useCallback(() => {
+    setGameState(prev => ({
+      ...prev,
+      battery: Math.min(100, Math.round((prev.battery + 35) * 10) / 10),
+    }));
+  }, []);
+
   const collectItem = useCallback((item: string) => {
     setGameState(prev => {
       if (prev.inventory.includes(item)) return prev;
@@ -281,6 +292,7 @@ export function useGameState() {
     moveToRoom,
     triggerPrank,
     collectKey,
+    collectBattery,
     collectItem,
     collectJournal,
     advanceLevel,

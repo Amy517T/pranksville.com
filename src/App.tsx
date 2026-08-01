@@ -15,6 +15,7 @@ import { GameOver } from './components/GameOver';
 import { Victory } from './components/Victory';
 import { Leaderboard, submitToLeaderboard } from './components/Leaderboard';
 import { InstallPrompt } from './components/InstallPrompt';
+import { AdOverlay } from './components/AdOverlay';
 
 function App() {
   const t = useT();
@@ -31,6 +32,7 @@ function App() {
     moveToRoom,
     triggerPrank,
     collectKey,
+    collectBattery,
     collectItem,
     collectJournal,
     advanceLevel,
@@ -128,8 +130,9 @@ function App() {
 
   const handleContinueFromLevelComplete = useCallback(() => {
     if (window.afficherPubliciteInterstitielle) {
-      setPhase('ad');
       window.afficherPubliciteInterstitielle().then(() => {
+        setPhase('playing');
+      }).catch(() => {
         setPhase('playing');
       });
     } else {
@@ -142,10 +145,15 @@ function App() {
       const timeSeconds = Math.floor((Date.now() - gameState.startTime) / 1000);
       submitToLeaderboard(
         gameState.playerName,
-        5,
+        gameState.hardcore ? 6 : 5,
         gameState.sanity,
         timeSeconds,
       );
+      const key = gameState.hardcore ? 'pranksville_best_hardcore' : 'pranksville_best_normal';
+      const existing = parseInt(localStorage.getItem(key) || '0', 10);
+      if (existing === 0 || timeSeconds < existing) {
+        localStorage.setItem(key, String(timeSeconds));
+      }
     }
   }, [phase, gameState]);
 
@@ -156,6 +164,10 @@ function App() {
           onStart={handleStart}
           onShowLeaderboard={() => setShowLeaderboard(true)}
         />
+      )}
+
+      {phase === 'ad' && (
+        <AdOverlay onComplete={() => setPhase('intro')} />
       )}
 
       {phase === 'intro' && (
@@ -180,6 +192,7 @@ function App() {
             onMoveToRoom={moveToRoom}
             onTriggerPrank={triggerPrank}
             onCollectKey={collectKey}
+            onCollectBattery={collectBattery}
             onCollectItem={collectItem}
             onCollectJournal={collectJournal}
             onAdvanceLevel={handleAdvanceLevel}

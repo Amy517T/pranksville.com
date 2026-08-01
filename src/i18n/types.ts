@@ -280,4 +280,10 @@ export interface Translations {
   shareNative: string;
   shareClose: string;
   shareScoreCard: string;
+  skipAd: string;
+  adSkipIn: string;
+  pickupBattery: string;
+  bestTime: string;
+  bestTimeHardcore: string;
+  newRecord: string;
 }

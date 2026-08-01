@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Crown, Timer, Heart, Trophy, RotateCcw, BookOpen } from 'lucide-react';
+import { Crown, Timer, Heart, Trophy, RotateCcw, BookOpen, Star } from 'lucide-react';
 import type { GameState } from '../game/types';
 import { useT } from '../i18n';
 
@@ -16,6 +16,16 @@ export function Victory({ gameState, onRestart, onShowLeaderboard }: VictoryProp
   const seconds = timeSeconds % 60;
   const [narrativeIndex, setNarrativeIndex] = useState(0);
   const [showStats, setShowStats] = useState(false);
+  const [isNewBest, setIsNewBest] = useState(false);
+
+  const bestKey = gameState.hardcore ? 'pranksville_best_hardcore' : 'pranksville_best_normal';
+  const bestTime = parseInt(localStorage.getItem(bestKey) || '0', 10);
+
+  useEffect(() => {
+    setIsNewBest(bestTime === 0 || timeSeconds <= bestTime);
+  }, []);
+
+  const formatTime = (s: number) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
 
   const endingNarrative = [
     t.ending_1, t.ending_2, t.ending_3, t.ending_4,
@@ -69,7 +79,7 @@ export function Victory({ gameState, onRestart, onShowLeaderboard }: VictoryProp
 
         {showStats && (
           <div>
-            <div className="flex justify-center gap-8 mb-10">
+            <div className="flex justify-center gap-8 mb-6">
               <div className="text-center">
                 <Heart className="w-5 h-5 mx-auto mb-1 text-red-400" />
                 <div className="text-2xl font-bold text-amber-400">{gameState.sanity}%</div>
@@ -91,6 +101,18 @@ export function Victory({ gameState, onRestart, onShowLeaderboard }: VictoryProp
                 <div className="text-xs uppercase tracking-wider text-amber-600/40">{t.journals}</div>
               </div>
             </div>
+
+            {bestTime > 0 && (
+              <div className="flex items-center justify-center gap-2 mb-6 text-amber-500/60">
+                <Star className="w-4 h-4" />
+                <span className="text-sm tracking-wider">
+                  {t.bestTime}: {formatTime(bestTime)}
+                </span>
+                {isNewBest && (
+                  <span className="text-xs text-green-400 font-bold animate-pulse ml-2">{t.newRecord}</span>
+                )}
+              </div>
+            )}
 
             <div className="flex flex-col items-center gap-3">
               <button
