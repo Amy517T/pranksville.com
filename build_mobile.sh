@@ -3,8 +3,14 @@
 set -e
 # 2. Define configuration variables
 WRAPPER_DIR="game-wrapper"
-APP_ID="com.yourname.gametitle"
-APP_NAME="GameTitle"
+APP_ID="com.pranksville.game"
+APP_NAME="Pranksville"
+
+# AdMob ad unit IDs
+ADMOB_ANDROID_APP_ID="ca-app-pub-4970227942304243~8973417513"
+ADMOB_ANDROID_AD_UNIT="ca-app-pub-4970227942304243/7660335848"
+ADMOB_IOS_APP_ID="ca-app-pub-4970227942304243~6723543172"
+ADMOB_IOS_AD_UNIT="ca-app-pub-4970227942304243/8691230961"
 echo "📦 Step 1: Building your Bolt web project..."
 npm install
 npm run build
@@ -33,6 +39,10 @@ echo "🤖 Step 4: Adding mobile platforms..."
 cordova platform add android
 # Uncomment the line below if you are working on a Mac and want iOS
 # cordova platform add ios
+echo "📢 Step 4b: Installing AdMob plugin..."
+cordova plugin add cordova-admob-plus \
+  --variable ADMOB_ANDROID_APP_ID="$ADMOB_ANDROID_APP_ID" \
+  --variable ADMOB_IOS_APP_ID="$ADMOB_IOS_APP_ID"
 echo "🧹 Step 5: Transferring game assets..."
 rm -rf www/*
 cp -R ../$BUILD_DIR/* www/

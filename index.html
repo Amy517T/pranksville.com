@@ -50,113 +50,130 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Fake HTML5 ad SDK (placeholder) -->
+    <!-- Google AdMob Interstitial Ads -->
     <script>
-      // Simulated HTML5 interstitial ad network placeholder.
-      // Exposes window.afficherPubliciteInterstitielle() which pauses the game,
-      // shows a black screen with a 5-second countdown, then resumes play.
       (function () {
-        var AD_DURATION = 5; // seconds
-        var overlay = null;
-        var countdownEl = null;
-        var timer = null;
+        var ADMOB_ANDROID_APP_ID = 'ca-app-pub-4970227942304243~8973417513';
+        var ADMOB_ANDROID_AD_UNIT = 'ca-app-pub-4970227942304243/7660335848';
+        var ADMOB_IOS_APP_ID = 'ca-app-pub-4970227942304243~6723543172';
+        var ADMOB_IOS_AD_UNIT = 'ca-app-pub-4970227942304243/8691230961';
 
-        function createOverlay() {
-          overlay = document.createElement('div');
-          overlay.id = 'interstitial-ad-overlay';
-          overlay.style.cssText = [
-            'position:fixed',
-            'inset:0',
-            'z-index:99999',
-            'background:#000000',
-            'display:flex',
-            'flex-direction:column',
-            'align-items:center',
-            'justify-content:center',
-            'font-family:Georgia,serif',
-            'color:#888888',
-            'text-align:center',
-            'user-select:none',
-            'cursor:default',
-          ].join(';');
+        function isAndroid() { return /android/i.test(navigator.userAgent); }
+        function isIOS() { return /iPad|iPhone|iPod/.test(navigator.userAgent); }
+        function isMobile() { return isAndroid() || isIOS(); }
 
-          var label = document.createElement('div');
-          label.textContent = 'Publicité';
-          label.style.cssText = [
-            'font-size:11px',
-            'letter-spacing:0.5em',
-            'text-transform:uppercase',
-            'margin-bottom:32px',
-            'opacity:0.5',
-          ].join(';');
-          overlay.appendChild(label);
+        // --- Cordova / AdMob plugin path (native app) ---
+        if (isMobile() && window.cordova && window.admob) {
+          var appId = isAndroid() ? ADMOB_ANDROID_APP_ID : ADMOB_IOS_APP_ID;
+          var adUnitId = isAndroid() ? ADMOB_ANDROID_AD_UNIT : ADMOB_IOS_AD_UNIT;
 
-          var adBox = document.createElement('div');
-          adBox.style.cssText = [
-            'width:300px',
-            'max-width:80vw',
-            'height:250px',
-            'border:1px solid #333333',
-            'display:flex',
-            'align-items:center',
-            'justify-content:center',
-            'margin-bottom:32px',
-            'background:#0a0a0a',
-          ].join(';');
-          var adContent = document.createElement('div');
-          adContent.textContent = 'Emplacement publicitaire\nHTML5 — Placeholder';
-          adContent.style.cssText = [
-            'font-size:13px',
-            'white-space:pre-line',
-            'line-height:1.6',
-            'opacity:0.6',
-          ].join(';');
-          adBox.appendChild(adContent);
-          overlay.appendChild(adBox);
+          document.addEventListener('deviceready', function () {
+            window.admob.setAppID({ appID: appId });
+            window.admob.interstitial().load({ id: adUnitId });
+          }, false);
 
-          countdownEl = document.createElement('div');
-          countdownEl.style.cssText = [
-            'font-size:14px',
-            'opacity:0.7',
-          ].join(';');
-          overlay.appendChild(countdownEl);
-
-          document.body.appendChild(overlay);
-        }
-
-        function removeOverlay() {
-          if (overlay && overlay.parentNode) {
-            overlay.parentNode.removeChild(overlay);
-          }
-          overlay = null;
-          countdownEl = null;
-        }
-
-        window.afficherPubliciteInterstitielle = function () {
-          return new Promise(function (resolve) {
-            // Pause the game via a custom event the React app listens for.
-            document.dispatchEvent(new CustomEvent('pranksville:ad-start'));
-
-            createOverlay();
-
-            var remaining = AD_DURATION;
-            countdownEl.textContent = 'Reprise dans ' + remaining + '...';
-
-            timer = setInterval(function () {
-              remaining -= 1;
-              if (remaining <= 0) {
-                clearInterval(timer);
-                timer = null;
-                removeOverlay();
-                // Resume the game.
+          window.afficherPubliciteInterstitielle = function () {
+            return new Promise(function (resolve) {
+              document.dispatchEvent(new CustomEvent('pranksville:ad-start'));
+              var interstitial = window.admob.interstitial();
+              interstitial.isReady().then(function (ready) {
+                if (ready) {
+                  interstitial.show().then(function () {
+                    document.dispatchEvent(new CustomEvent('pranksville:ad-end'));
+                    resolve();
+                  }).catch(function () {
+                    document.dispatchEvent(new CustomEvent('pranksville:ad-end'));
+                    resolve();
+                  });
+                } else {
+                  interstitial.load({ id: adUnitId }).then(function () {
+                    return interstitial.show();
+                  }).then(function () {
+                    document.dispatchEvent(new CustomEvent('pranksville:ad-end'));
+                    resolve();
+                  }).catch(function () {
+                    document.dispatchEvent(new CustomEvent('pranksville:ad-end'));
+                    resolve();
+                  });
+                }
+              }).catch(function () {
                 document.dispatchEvent(new CustomEvent('pranksville:ad-end'));
                 resolve();
-              } else {
-                countdownEl.textContent = 'Reprise dans ' + remaining + '...';
-              }
-            }, 1000);
-          });
-        };
+              });
+            });
+          };
+        } else {
+          // --- Browser fallback (web / dev) ---
+          var AD_DURATION = 5;
+          var overlay = null;
+          var countdownEl = null;
+          var timer = null;
+
+          function createOverlay() {
+            overlay = document.createElement('div');
+            overlay.id = 'interstitial-ad-overlay';
+            overlay.style.cssText = [
+              'position:fixed', 'inset:0', 'z-index:99999',
+              'background:#000000', 'display:flex', 'flex-direction:column',
+              'align-items:center', 'justify-content:center',
+              'font-family:Georgia,serif', 'color:#888888',
+              'text-align:center', 'user-select:none', 'cursor:default',
+            ].join(';');
+
+            var label = document.createElement('div');
+            label.textContent = 'Advertisement';
+            label.style.cssText = [
+              'font-size:11px', 'letter-spacing:0.5em', 'text-transform:uppercase',
+              'margin-bottom:32px', 'opacity:0.5',
+            ].join(';');
+            overlay.appendChild(label);
+
+            var adBox = document.createElement('div');
+            adBox.style.cssText = [
+              'width:300px', 'max-width:80vw', 'height:250px',
+              'border:1px solid #333333', 'display:flex', 'align-items:center',
+              'justify-content:center', 'margin-bottom:32px', 'background:#0a0a0a',
+            ].join(';');
+            var adContent = document.createElement('div');
+            adContent.textContent = 'Ad will appear here on mobile';
+            adContent.style.cssText = ['font-size:13px', 'white-space:pre-line', 'line-height:1.6', 'opacity:0.6'].join(';');
+            adBox.appendChild(adContent);
+            overlay.appendChild(adBox);
+
+            countdownEl = document.createElement('div');
+            countdownEl.style.cssText = ['font-size:14px', 'opacity:0.7'].join(';');
+            overlay.appendChild(countdownEl);
+
+            document.body.appendChild(overlay);
+          }
+
+          function removeOverlay() {
+            if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+            overlay = null;
+            countdownEl = null;
+          }
+
+          window.afficherPubliciteInterstitielle = function () {
+            return new Promise(function (resolve) {
+              document.dispatchEvent(new CustomEvent('pranksville:ad-start'));
+              createOverlay();
+              var remaining = AD_DURATION;
+              countdownEl.textContent = 'Resuming in ' + remaining + '...';
+              timer = setInterval(function () {
+                remaining -= 1;
+                if (remaining <= 0) {
+                  clearInterval(timer);
+                  timer = null;
+                  removeOverlay();
+                  document.dispatchEvent(new CustomEvent('pranksville:ad-end'));
+                  resolve();
+                } else {
+                  countdownEl.textContent = 'Resuming in ' + remaining + '...';
+                }
+              }, 1000);
+            });
+          };
+        }
       })();
     </script>
   </body>
