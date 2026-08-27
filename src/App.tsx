@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useGameState } from './game/useGameState';
+import type { GamePhase } from './game/types';
 import { levels } from './game/levels';
 import { playAmbientDrone, playHeartbeat, playLowSanityDrone, playDistantScream, playStaticBurst, playViolinSting, playChildGiggle } from './lib/sounds';
 import { useT } from './i18n';
@@ -47,6 +48,7 @@ function App() {
   const [showMap, setShowMap] = useState(false);
   const [showInventory, setShowInventory] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [afterAdPhase, setAfterAdPhase] = useState<GamePhase | null>(null);
   const [drone, setDrone] = useState<{ stop: () => void } | null>(null);
   const [lowSanityDrone, setLowSanityDrone] = useState<{ stop: () => void } | null>(null);
   const [heartbeatInterval, setHeartbeatInterval] = useState<ReturnType<typeof setInterval> | null>(null);
@@ -129,15 +131,8 @@ function App() {
   }, [advanceLevel]);
 
   const handleContinueFromLevelComplete = useCallback(() => {
-    if (window.afficherPubliciteInterstitielle) {
-      window.afficherPubliciteInterstitielle().then(() => {
-        setPhase('playing');
-      }).catch(() => {
-        setPhase('playing');
-      });
-    } else {
-      setPhase('playing');
-    }
+    setAfterAdPhase('playing');
+    setPhase('ad');
   }, [setPhase]);
 
   useEffect(() => {
@@ -167,7 +162,11 @@ function App() {
       )}
 
       {phase === 'ad' && (
-        <AdOverlay onComplete={() => setPhase('intro')} />
+        <AdOverlay onComplete={() => {
+          const next = afterAdPhase ?? 'intro';
+          setAfterAdPhase(null);
+          setPhase(next);
+        }} />
       )}
 
       {phase === 'intro' && (

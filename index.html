@@ -103,76 +103,8 @@
             });
           };
         } else {
-          // --- Browser fallback (web / dev) ---
-          var AD_DURATION = 5;
-          var overlay = null;
-          var countdownEl = null;
-          var timer = null;
-
-          function createOverlay() {
-            overlay = document.createElement('div');
-            overlay.id = 'interstitial-ad-overlay';
-            overlay.style.cssText = [
-              'position:fixed', 'inset:0', 'z-index:99999',
-              'background:#000000', 'display:flex', 'flex-direction:column',
-              'align-items:center', 'justify-content:center',
-              'font-family:Georgia,serif', 'color:#888888',
-              'text-align:center', 'user-select:none', 'cursor:default',
-            ].join(';');
-
-            var label = document.createElement('div');
-            label.textContent = 'Advertisement';
-            label.style.cssText = [
-              'font-size:11px', 'letter-spacing:0.5em', 'text-transform:uppercase',
-              'margin-bottom:32px', 'opacity:0.5',
-            ].join(';');
-            overlay.appendChild(label);
-
-            var adBox = document.createElement('div');
-            adBox.style.cssText = [
-              'width:300px', 'max-width:80vw', 'height:250px',
-              'border:1px solid #333333', 'display:flex', 'align-items:center',
-              'justify-content:center', 'margin-bottom:32px', 'background:#0a0a0a',
-            ].join(';');
-            var adContent = document.createElement('div');
-            adContent.textContent = 'Ad will appear here on mobile';
-            adContent.style.cssText = ['font-size:13px', 'white-space:pre-line', 'line-height:1.6', 'opacity:0.6'].join(';');
-            adBox.appendChild(adContent);
-            overlay.appendChild(adBox);
-
-            countdownEl = document.createElement('div');
-            countdownEl.style.cssText = ['font-size:14px', 'opacity:0.7'].join(';');
-            overlay.appendChild(countdownEl);
-
-            document.body.appendChild(overlay);
-          }
-
-          function removeOverlay() {
-            if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
-            overlay = null;
-            countdownEl = null;
-          }
-
-          window.afficherPubliciteInterstitielle = function () {
-            return new Promise(function (resolve) {
-              document.dispatchEvent(new CustomEvent('pranksville:ad-start'));
-              createOverlay();
-              var remaining = AD_DURATION;
-              countdownEl.textContent = 'Resuming in ' + remaining + '...';
-              timer = setInterval(function () {
-                remaining -= 1;
-                if (remaining <= 0) {
-                  clearInterval(timer);
-                  timer = null;
-                  removeOverlay();
-                  document.dispatchEvent(new CustomEvent('pranksville:ad-end'));
-                  resolve();
-                } else {
-                  countdownEl.textContent = 'Resuming in ' + remaining + '...';
-                }
-              }, 1000);
-            });
-          };
+          // Browser: React AdOverlay component handles the placeholder UI.
+          // No window function is set, so AdOverlay shows its own countdown screen.
         }
       })();
     </script>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useT } from '../i18n';
 
 interface AdOverlayProps {
@@ -10,27 +10,54 @@ export function AdOverlay({ onComplete, skipAfterSeconds = 5 }: AdOverlayProps) 
   const t = useT();
   const [countdown, setCountdown] = useState(skipAfterSeconds);
   const [canSkip, setCanSkip] = useState(false);
+  const [adState, setAdState] = useState<'loading' | 'watching' | 'done'>('loading');
+
+  const showRealAd = useCallback(async () => {
+    if (window.afficherPubliciteInterstitielle) {
+      try {
+        await window.afficherPubliciteInterstitielle();
+      } catch {
+        // Ad failed — continue anyway
+      }
+    }
+    setAdState('done');
+    onComplete();
+  }, [onComplete]);
 
   useEffect(() => {
+    if (window.afficherPubliciteInterstitielle) {
+      // Native mobile: show real AdMob interstitial, no placeholder needed
+      showRealAd();
+      return;
+    }
+    // Browser: show placeholder with countdown
+    setAdState('watching');
+  }, [showRealAd]);
+
+  useEffect(() => {
+    if (adState !== 'watching') return;
     if (countdown <= 0) {
       setCanSkip(true);
       return;
     }
     const timer = setTimeout(() => setCountdown(prev => prev - 1), 1000);
     return () => clearTimeout(timer);
-  }, [countdown]);
+  }, [countdown, adState]);
 
-  const handleSkip = () => {
-    if (window.afficherPubliciteInterstitielle) {
-      window.afficherPubliciteInterstitielle().then(() => {
-        onComplete();
-      }).catch(() => {
-        onComplete();
-      });
-    } else {
-      onComplete();
-    }
-  };
+  const handleSkip = useCallback(() => {
+    setAdState('done');
+    onComplete();
+  }, [onComplete]);
+
+  if (adState === 'loading') {
+    return (
+      <div className="fixed inset-0 z-[60] bg-black flex items-center justify-center">
+        <div className="text-zinc-600 text-sm uppercase tracking-[0.4em] animate-pulse">
+          Loading...
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 z-[60] bg-black flex flex-col items-center justify-center">
