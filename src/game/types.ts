@@ -61,4 +61,4 @@ export interface GameState {
   hardcore: boolean;
 }
 
-export type GamePhase = 'title' | 'intro' | 'playing' | 'scare' | 'levelComplete' | 'ad' | 'gameOver' | 'victory';
+export type GamePhase = 'title' | 'intro' | 'playing' | 'scare' | 'levelComplete' | 'gameOver' | 'victory';

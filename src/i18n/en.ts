@@ -200,8 +200,6 @@ export const en: Translations = {
   shareNative: 'Share',
   shareClose: 'Close',
   shareScoreCard: 'Score Card',
-  skipAd: 'Skip Ad',
-  adSkipIn: 'Skip in',
   pickupBattery: 'Pick up battery',
   bestTime: 'Best Time',
   bestTimeHardcore: 'Best (Hardcore)',

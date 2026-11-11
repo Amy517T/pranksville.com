@@ -112,7 +112,7 @@ export function useGameState() {
     const startSanity = hardcore ? 75 : 100;
     const startBattery = hardcore ? 75 : 100;
     setGameState({ ...initialState, playerName, startTime: Date.now(), hardcore, sanity: startSanity, battery: startBattery });
-    setPhase('ad');
+    setPhase('intro');
     setPursuit({ active: false, roomId: null, roomsBehind: 3, message: '' });
   }, []);
 

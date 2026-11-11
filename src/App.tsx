@@ -16,7 +16,6 @@ import { GameOver } from './components/GameOver';
 import { Victory } from './components/Victory';
 import { Leaderboard, submitToLeaderboard } from './components/Leaderboard';
 import { InstallPrompt } from './components/InstallPrompt';
-import { AdOverlay } from './components/AdOverlay';
 
 function App() {
   const t = useT();
@@ -48,7 +47,6 @@ function App() {
   const [showMap, setShowMap] = useState(false);
   const [showInventory, setShowInventory] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
-  const [afterAdPhase, setAfterAdPhase] = useState<GamePhase | null>(null);
   const [drone, setDrone] = useState<{ stop: () => void } | null>(null);
   const [lowSanityDrone, setLowSanityDrone] = useState<{ stop: () => void } | null>(null);
   const [heartbeatInterval, setHeartbeatInterval] = useState<ReturnType<typeof setInterval> | null>(null);
@@ -131,8 +129,7 @@ function App() {
   }, [advanceLevel]);
 
   const handleContinueFromLevelComplete = useCallback(() => {
-    setAfterAdPhase('playing');
-    setPhase('ad');
+    setPhase('playing');
   }, [setPhase]);
 
   useEffect(() => {
@@ -159,14 +156,6 @@ function App() {
           onStart={handleStart}
           onShowLeaderboard={() => setShowLeaderboard(true)}
         />
-      )}
-
-      {phase === 'ad' && (
-        <AdOverlay onComplete={() => {
-          const next = afterAdPhase ?? 'intro';
-          setAfterAdPhase(null);
-          setPhase(next);
-        }} />
       )}
 
       {phase === 'intro' && (
