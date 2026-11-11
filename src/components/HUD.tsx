@@ -33,9 +33,13 @@ export function HUD({ gameState, currentLevel, onToggleMap, onToggleInventory }:
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-30 pointer-events-none">
-      <div className="flex items-center justify-between px-4 py-3 pointer-events-auto"
-        style={{ background: `linear-gradient(to bottom, ${currentLevel.colorScheme.primary}ee, transparent)` }}>
+    <div className="fixed top-0 left-0 right-0 z-30 pointer-events-none perspective-1000">
+      <div className="flex items-center justify-between px-4 py-3 pointer-events-auto animate-slide-up preserve-3d"
+        style={{
+          background: `linear-gradient(to bottom, ${currentLevel.colorScheme.primary}ee, transparent)`,
+          boxShadow: `0 8px 25px rgba(0,0,0,0.5)`,
+          transformStyle: 'preserve-3d',
+        }}>
 
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">

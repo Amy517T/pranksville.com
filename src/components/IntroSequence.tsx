@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronRight, SkipForward } from 'lucide-react';
 import { useT } from '../i18n';
+import { Particles3D } from './Particles3D';
 
 interface IntroSequenceProps {
   playerName: string;
@@ -50,35 +51,48 @@ export function IntroSequence({ playerName, onComplete }: IntroSequenceProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black flex items-center justify-center transition-opacity duration-1000"
+      className="fixed inset-0 z-50 bg-black flex items-center justify-center transition-opacity duration-1000 perspective-2000"
       onClick={() => {
         if (currentLine >= introLines.length) {
           onComplete();
         }
       }}
     >
+      {/* Deep background depth */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'radial-gradient(ellipse at center, #0a0303 0%, #000 70%)',
+          transform: 'translateZ(-100px) scale(1.1)',
+        }}
+      />
+
+      {/* Floating dust */}
+      <Particles3D count={20} color="#660000" sizeRange={[1, 3]} speed={0.5} zIndex={1} />
+
       <button
         onClick={(e) => {
           e.stopPropagation();
           onComplete();
         }}
-        className="absolute top-6 right-6 z-10 flex items-center gap-2 px-4 py-2 rounded border border-red-900/40 bg-black/60 text-red-500/70 hover:text-red-400 hover:border-red-700/60 transition-all duration-300"
+        className="absolute top-6 right-6 z-10 btn-3d flex items-center gap-2 px-4 py-2 rounded border border-red-900/40 bg-black/60 text-red-500/70 hover:text-red-400 hover:border-red-700/60 transition-all duration-300"
         aria-label="Skip intro"
       >
         <SkipForward className="w-4 h-4" />
         <span className="text-xs tracking-widest uppercase">Skip</span>
       </button>
 
-      <div className="max-w-xl w-full px-8 space-y-4">
+      <div className="max-w-xl w-full px-8 space-y-4 relative z-10 preserve-3d" style={{ transform: 'translateZ(20px)' }}>
         {displayedLines.map((line, i) => (
           <p
             key={i}
-            className="text-base md:text-lg leading-relaxed transition-all duration-700"
+            className="text-base md:text-lg leading-relaxed transition-all duration-700 animate-text-reveal-3d"
             style={{
               color: i === displayedLines.length - 1 ? '#cc6666' : i < 3 ? '#666' : '#999',
               fontFamily: 'Georgia, serif',
-              textShadow: i === displayedLines.length - 1 ? '0 0 15px rgba(200,0,0,0.3)' : 'none',
+              textShadow: i === displayedLines.length - 1 ? '0 0 15px rgba(200,0,0,0.3), 0 5px 20px rgba(0,0,0,0.8)' : 'none',
               opacity: i === displayedLines.length - 1 ? 1 : 0.6,
+              transform: `translateZ(${i === displayedLines.length - 1 ? 30 : 10}px)`,
             }}
           >
             {line}

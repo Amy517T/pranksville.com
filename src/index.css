@@ -39,6 +39,13 @@ body {
   border-radius: 2px;
 }
 
+/* ===== 3D Perspective Foundation ===== */
+.perspective-1000 { perspective: 1000px; }
+.perspective-2000 { perspective: 2000px; }
+.preserve-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; }
+
+/* ===== Keyframe Animations ===== */
 @keyframes flicker {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.8; }
@@ -83,6 +90,281 @@ body {
 
 .animate-slide-up {
   animation: slideUp 0.4s ease-out;
+}
+
+/* ===== 3D Float Animation ===== */
+@keyframes float3d {
+  0%, 100% { transform: translateY(0) translateZ(0) rotateX(0) rotateY(0); }
+  25% { transform: translateY(-20px) translateZ(30px) rotateX(5deg) rotateY(8deg); }
+  50% { transform: translateY(-10px) translateZ(60px) rotateX(-3deg) rotateY(-5deg); }
+  75% { transform: translateY(-25px) translateZ(20px) rotateX(2deg) rotateY(10deg); }
+}
+
+.animate-float-3d {
+  animation: float3d 8s ease-in-out infinite;
+}
+
+/* ===== 3D Entrance Animations ===== */
+@keyframes roomEnter {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) translateZ(-200px) scale(0.85) rotateX(8deg);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) translateZ(0) scale(1) rotateX(0deg);
+    filter: blur(0px);
+  }
+}
+
+.animate-room-enter {
+  animation: roomEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes titleEnter {
+  0% {
+    opacity: 0;
+    transform: perspective(1500px) translateZ(-400px) translateY(30px) rotateX(15deg) scale(0.8);
+    filter: blur(15px);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1500px) translateZ(0) translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.animate-title-enter {
+  animation: titleEnter 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp3d {
+  0% {
+    opacity: 0;
+    transform: perspective(800px) translateY(40px) rotateX(10deg) translateZ(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(800px) translateY(0) rotateX(0deg) translateZ(0);
+  }
+}
+
+.animate-fade-up-3d {
+  animation: fadeUp3d 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes textReveal3d {
+  0% {
+    opacity: 0;
+    transform: perspective(800px) translateZ(-100px) rotateY(-20deg);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(800px) translateZ(0) rotateY(0deg);
+    filter: blur(0px);
+  }
+}
+
+.animate-text-reveal-3d {
+  animation: textReveal3d 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ===== 3D Door Button Hover ===== */
+@keyframes doorOpen {
+  0% { transform: perspective(600px) rotateY(0deg); }
+  100% { transform: perspective(600px) rotateY(-25deg); }
+}
+
+/* ===== Scare Zoom ===== */
+@keyframes scareZoom3d {
+  0% {
+    transform: perspective(800px) scale(0.3) translateZ(-500px) rotateX(10deg);
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(800px) scale(1.1) translateZ(50px) rotateX(-3deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(800px) scale(1) translateZ(0) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.animate-scare-zoom-3d {
+  animation: scareZoom3d 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scareShake3d {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-8px, -4px) rotate(-1deg); }
+  20% { transform: translate(8px, 4px) rotate(1deg); }
+  30% { transform: translate(-6px, 6px) rotate(-0.5deg); }
+  40% { transform: translate(6px, -6px) rotate(0.5deg); }
+  50% { transform: translate(-10px, 2px) rotate(-1.5deg); }
+  60% { transform: translate(10px, -2px) rotate(1.5deg); }
+  70% { transform: translate(-4px, 4px) rotate(-0.5deg); }
+  80% { transform: translate(4px, -4px) rotate(0.5deg); }
+  90% { transform: translate(-2px, 2px) rotate(0deg); }
+}
+
+.animate-scare-shake-3d {
+  animation: scareShake3d 0.5s ease-in-out;
+}
+
+/* ===== Particle Floating ===== */
+@keyframes particleFloat {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% {
+    transform: translate3d(var(--dx, 20px), var(--dy, -100px), var(--dz, 50px));
+    opacity: 0;
+  }
+}
+
+/* ===== Depth Pulse ===== */
+@keyframes depthPulse {
+  0%, 100% {
+    transform: translateZ(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateZ(40px) scale(1.05);
+    opacity: 0.6;
+  }
+}
+
+.animate-depth-pulse {
+  animation: depthPulse 4s ease-in-out infinite;
+}
+
+/* ===== 3D Card Flip ===== */
+@keyframes cardFlip3d {
+  0% { transform: perspective(1000px) rotateY(180deg) translateZ(-50px); opacity: 0; }
+  100% { transform: perspective(1000px) rotateY(0deg) translateZ(0); opacity: 1; }
+}
+
+.animate-card-flip-3d {
+  animation: cardFlip3d 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ===== Vortex Spin ===== */
+@keyframes vortexSpin {
+  0% { transform: perspective(1000px) rotateY(0deg) rotateX(20deg) translateZ(-200px) scale(0.5); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: perspective(1000px) rotateY(360deg) rotateX(0deg) translateZ(0) scale(1); opacity: 1; }
+}
+
+.animate-vortex-spin {
+  animation: vortexSpin 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ===== Emerge from Dark ===== */
+@keyframes emergeFromDark {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) scale(1.5) translateZ(-300px);
+    filter: blur(20px) brightness(0);
+  }
+  50% {
+    opacity: 0.4;
+    filter: blur(8px) brightness(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) scale(1) translateZ(0);
+    filter: blur(0px) brightness(1);
+  }
+}
+
+.animate-emerge {
+  animation: emergeFromDark 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ===== Slow Rotate for 3D icons ===== */
+@keyframes slowRotate3d {
+  0% { transform: rotateY(0deg) rotateX(0deg); }
+  50% { transform: rotateY(180deg) rotateX(10deg); }
+  100% { transform: rotateY(360deg) rotateX(0deg); }
+}
+
+.animate-slow-rotate-3d {
+  animation: slowRotate3d 12s linear infinite;
+}
+
+/* ===== Parallax Tilt ===== */
+@keyframes tilt3d {
+  0%, 100% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); }
+  25% { transform: perspective(1000px) rotateX(3deg) rotateY(-3deg); }
+  50% { transform: perspective(1000px) rotateX(-2deg) rotateY(2deg); }
+  75% { transform: perspective(1000px) rotateX(2deg) rotateY(3deg); }
+}
+
+.animate-tilt-3d {
+  animation: tilt3d 10s ease-in-out infinite;
+}
+
+/* ===== Depth Shimmer for buttons ===== */
+@keyframes depthShimmer {
+  0%, 100% { box-shadow: 0 0 20px var(--glow, rgba(200,0,0,0.3)), 0 5px 15px rgba(0,0,0,0.5); }
+  50% { box-shadow: 0 0 40px var(--glow, rgba(200,0,0,0.5)), 0 8px 25px rgba(0,0,0,0.6); }
+}
+
+.animate-depth-shimmer {
+  animation: depthShimmer 3s ease-in-out infinite;
+}
+
+/* ===== 3D Button hover transform ===== */
+.btn-3d {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.btn-3d:hover {
+  transform: perspective(600px) translateZ(15px) rotateX(-5deg) scale(1.05);
+}
+
+.btn-3d:active {
+  transform: perspective(600px) translateZ(-5px) rotateX(0deg) scale(0.98);
+}
+
+/* ===== Layered depth container ===== */
+.depth-layer {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+/* ===== Glassmorphic 3D panel ===== */
+.panel-3d {
+  background: rgba(10, 5, 5, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 0, 0, 0.15);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+}
+
+/* ===== Vignette 3D wrapper ===== */
+.vignette-3d::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0.8) 100%);
+  z-index: 5;
 }
 
 /* Touch optimization for mobile */
